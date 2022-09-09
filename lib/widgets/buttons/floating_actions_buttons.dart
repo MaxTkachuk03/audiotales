@@ -1,4 +1,3 @@
-import 'package:audiotales/pages/main_page.dart';
 import 'package:audiotales/pages/registration_pages/registration_page(code).dart';
 import 'package:audiotales/pages/registration_pages/registration_page(end).dart';
 import 'package:audiotales/pages/registration_pages/registration_page(numbers).dart';
@@ -106,29 +105,4 @@ class FloatingABWrapperCode extends StatelessWidget {
   }
 }
 
-class TextButtonWapper extends StatelessWidget {
-  const TextButtonWapper({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    double m = MediaQuery.of(context).size.height;
-    return TextButton(
-      onPressed: () {
-        Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const MainPage()));
-      },
-      child: Text(
-        S.of(context).after,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: black,
-          fontWeight: FontWeight.w400,
-          fontSize: m / 30,
-          fontStyle: FontStyle.normal,
-        ),
-      ),
-    );
-  }
-}

@@ -4,8 +4,8 @@ import 'dart:core';
 import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/resouses/borders.dart';
 import 'package:audiotales/resouses/colors.dart';
-import 'package:audiotales/src/wrappers/buttons.dart';
-import 'package:audiotales/src/wrappers/circular_wrapper.dart';
+import 'package:audiotales/widgets/buttons/floating_actions_buttons.dart';
+import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationPageCode extends StatefulWidget {

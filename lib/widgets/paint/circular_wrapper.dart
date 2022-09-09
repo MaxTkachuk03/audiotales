@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/clipper.dart';
+import 'clipper.dart';
 
 class CircularWrapper extends StatelessWidget {
   const CircularWrapper({

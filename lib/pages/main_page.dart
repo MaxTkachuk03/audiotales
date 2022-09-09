@@ -1,6 +1,6 @@
 import 'package:audiotales/resouses/colors.dart';
-import 'package:audiotales/src/wrappers/bottomnavigator.dart';
-import 'package:audiotales/src/wrappers/circular_wrapper.dart';
+import 'package:audiotales/widgets/navigation/bottomnavigator.dart';
+import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:flutter/material.dart';
 
 
