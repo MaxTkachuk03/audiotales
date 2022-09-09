@@ -1,8 +1,8 @@
-import 'package:audiotales/src/colors/colors.dart';
-import 'package:audiotales/view/logined_pages/main_page.dart';
-import 'package:audiotales/view/registration_pages/registration_page(code).dart';
-import 'package:audiotales/view/registration_pages/registration_page(end).dart';
-import 'package:audiotales/view/registration_pages/registration_page(numbers).dart';
+import 'package:audiotales/pages/main_page.dart';
+import 'package:audiotales/pages/registration_pages/registration_page(code).dart';
+import 'package:audiotales/pages/registration_pages/registration_page(end).dart';
+import 'package:audiotales/pages/registration_pages/registration_page(numbers).dart';
+import 'package:audiotales/resouses/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
@@ -18,7 +18,7 @@ class FloatingABWrapper extends StatelessWidget {
       width: 300,
       child: FloatingActionButton.extended(
         enableFeedback: true,
-        backgroundColor: floatingABwrapperColor,
+        backgroundColor: orange,
         onPressed: () {
           Navigator.push(
               context,
@@ -29,7 +29,7 @@ class FloatingABWrapper extends StatelessWidget {
           S.of(context).buttonText,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: memoryBoxSplashScreen,
+            color: white,
             fontWeight: FontWeight.w400,
             fontSize: m/46,
             fontStyle: FontStyle.normal,
@@ -51,7 +51,7 @@ class FloatingABWrapperNumbers extends StatelessWidget {
       width: 300,
       child: FloatingActionButton.extended(
         enableFeedback: true,
-        backgroundColor: floatingABwrapperColor,
+        backgroundColor: orange,
         onPressed: () {
           Navigator.push(
               context,
@@ -62,7 +62,7 @@ class FloatingABWrapperNumbers extends StatelessWidget {
           S.of(context).buttonText,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: memoryBoxSplashScreen,
+            color: white,
             fontWeight: FontWeight.w400,
             fontSize: m/46,
             fontStyle: FontStyle.normal,
@@ -84,7 +84,7 @@ class FloatingABWrapperCode extends StatelessWidget {
       width: 300,
       child: FloatingActionButton.extended(
         enableFeedback: true,
-        backgroundColor: floatingABwrapperColor,
+        backgroundColor: orange,
         onPressed: () {
           Navigator.push(
               context,
@@ -95,7 +95,7 @@ class FloatingABWrapperCode extends StatelessWidget {
           S.of(context).buttonText,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: memoryBoxSplashScreen,
+            color: white,
             fontWeight: FontWeight.w400,
             fontSize: m/46,
             fontStyle: FontStyle.normal,
@@ -123,7 +123,7 @@ class TextButtonWapper extends StatelessWidget {
         S.of(context).after,
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: helloColor,
+          color: black,
           fontWeight: FontWeight.w400,
           fontSize: m / 30,
           fontStyle: FontStyle.normal,

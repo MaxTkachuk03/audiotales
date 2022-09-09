@@ -219,6 +219,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Регистрация привяжет твои сказки  к облаку, после чего они всегда будут с тобой`
+  String get hint {
+    return Intl.message(
+      'Регистрация привяжет твои сказки  к облаку, после чего они всегда будут с тобой',
+      name: 'hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Мы рады тебя видеть`
+  String get weGlad {
+    return Intl.message(
+      'Мы рады тебя видеть',
+      name: 'weGlad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Взрослые иногда нуждаются в сказке даже больше, чем дети`
+  String get adultText {
+    return Intl.message(
+      'Взрослые иногда нуждаются в сказке даже больше, чем дети',
+      name: 'adultText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

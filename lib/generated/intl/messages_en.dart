@@ -22,12 +22,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "adultText": MessageLookupByLibrary.simpleMessage(
+            "Взрослые иногда нуждаются в сказке даже больше, чем дети"),
         "after": MessageLookupByLibrary.simpleMessage("Позже"),
         "audiorecord": MessageLookupByLibrary.simpleMessage("Аудиозаписи"),
         "buttonText": MessageLookupByLibrary.simpleMessage("Продолжить"),
         "code": MessageLookupByLibrary.simpleMessage(
             "Введи код из смс, чтобы мы тебя запомнили"),
         "hello": MessageLookupByLibrary.simpleMessage("Привет!"),
+        "hint": MessageLookupByLibrary.simpleMessage(
+            "Регистрация привяжет твои сказки  к облаку, после чего они всегда будут с тобой"),
         "main": MessageLookupByLibrary.simpleMessage("Главная"),
         "presentText":
             MessageLookupByLibrary.simpleMessage("Мы рады видеть тебя здесь."),
@@ -44,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "telephoneText":
             MessageLookupByLibrary.simpleMessage("Введи номер телефона"),
         "underMemoryBox":
-            MessageLookupByLibrary.simpleMessage("Твой голос всегда рядом")
+            MessageLookupByLibrary.simpleMessage("Твой голос всегда рядом"),
+        "weGlad": MessageLookupByLibrary.simpleMessage("Мы рады тебя видеть")
       };
 }
