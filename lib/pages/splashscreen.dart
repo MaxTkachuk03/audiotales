@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:audiotales/generated/l10n.dart';
-import 'package:audiotales/pages/registration_pages/registration_page(start).dart';
+import 'package:audiotales/pages/registration_pages/registration_page_start.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/images.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +14,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreen extends State<SplashScreen> {
+
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () {
@@ -51,7 +52,7 @@ class _SplashScreen extends State<SplashScreen> {
               const Padding(
                 padding: EdgeInsets.all(10),
               ),
-              microphone,
+              AppImages.microphone,
             ],
           ),
         ),

@@ -33,10 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hint": MessageLookupByLibrary.simpleMessage(
             "Регистрация привяжет твои сказки  к облаку, после чего они всегда будут с тобой"),
         "main": MessageLookupByLibrary.simpleMessage("Главная"),
-        "presentText":
-            MessageLookupByLibrary.simpleMessage("Мы рады видеть тебя здесь."),
-        "presentText2": MessageLookupByLibrary.simpleMessage(
-            "Это приложение поможет записывать сказки и держать их в удобном месте не заполняя память на телефоне"),
+        "presentText": MessageLookupByLibrary.simpleMessage(
+            "Мы рады видеть тебя здесь.\n Это приложение поможет записывать сказки и держать их в удобном месте не заполняя память на телефоне"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
         "record": MessageLookupByLibrary.simpleMessage("Запись"),
         "registrInfo": MessageLookupByLibrary.simpleMessage(

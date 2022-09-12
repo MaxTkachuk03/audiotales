@@ -20,7 +20,8 @@ class CircularWrapper extends StatelessWidget {
           CustomPaint(
             size: Size(
               m.width,
-              h.height / 2.35,
+              //h.height / 3,
+              h.height / 2.71515152
             ),
             painter: RPSCustomPainter(),
           ),

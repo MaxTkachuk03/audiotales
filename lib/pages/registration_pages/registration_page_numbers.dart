@@ -86,8 +86,7 @@ class _RegistrationPageStartState extends State<RegistrationPageNumbers> {
                         keyboardType: TextInputType.phone,
                         inputFormatters: [
                           // MaskedInputFormatter('+## (###) ### ### #'),
-                          PhoneInputFormatter(
-                          ),
+                          PhoneInputFormatter(),
                         ],
                         textAlign: TextAlign.center,
                         style: TextStyle(

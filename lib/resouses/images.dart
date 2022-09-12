@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-final Widget microphone = SvgPicture.asset(
-  'assets/Voice.svg',
-);
+class AppImages {
+  const AppImages._();
 
-final Widget heart = SvgPicture.asset(
-  'assets/Stroke.svg',
-);
+  static const String _path = 'assets/images';
+
+  static Widget microphone = SvgPicture.asset('$_path/Voice.svg');
+
+  static Widget heart = SvgPicture.asset('$_path/Storke.svg',);
+}

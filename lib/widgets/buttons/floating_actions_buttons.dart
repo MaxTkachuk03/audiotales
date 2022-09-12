@@ -1,6 +1,6 @@
-import 'package:audiotales/pages/registration_pages/registration_page(code).dart';
-import 'package:audiotales/pages/registration_pages/registration_page(end).dart';
-import 'package:audiotales/pages/registration_pages/registration_page(numbers).dart';
+import 'package:audiotales/pages/registration_pages/registration_page_code.dart';
+import 'package:audiotales/pages/registration_pages/registration_page_end.dart';
+import 'package:audiotales/pages/registration_pages/registration_page_numbers.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +11,6 @@ class FloatingABWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double m = MediaQuery.of(context).size.height;
     return SizedBox(
       height: 59,
       width: 300,
@@ -27,10 +26,10 @@ class FloatingABWrapper extends StatelessWidget {
         label: Text(
           S.of(context).buttonText,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: white,
             fontWeight: FontWeight.w400,
-            fontSize: m/46,
+            fontSize: 18.0,
             fontStyle: FontStyle.normal,
           ),
         ),
@@ -44,7 +43,6 @@ class FloatingABWrapperNumbers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double m = MediaQuery.of(context).size.height;
     return SizedBox(
       height: 59,
       width: 300,
@@ -60,10 +58,10 @@ class FloatingABWrapperNumbers extends StatelessWidget {
         label: Text(
           S.of(context).buttonText,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: white,
             fontWeight: FontWeight.w400,
-            fontSize: m/46,
+            fontSize: 18.0,
             fontStyle: FontStyle.normal,
           ),
         ),
@@ -77,7 +75,6 @@ class FloatingABWrapperCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double m = MediaQuery.of(context).size.height;
     return SizedBox(
       height: 59,
       width: 300,
@@ -93,10 +90,10 @@ class FloatingABWrapperCode extends StatelessWidget {
         label: Text(
           S.of(context).buttonText,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: white,
             fontWeight: FontWeight.w400,
-            fontSize: m/46,
+            fontSize: 18.0,
             fontStyle: FontStyle.normal,
           ),
         ),

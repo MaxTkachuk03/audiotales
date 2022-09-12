@@ -84,7 +84,7 @@ class _RegistrationPageEndState extends State<RegistrationPageEnd> {
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(n / 20, m / 10, n / 20, 0),
-                    child: heart,
+                    child: AppImages.heart,
                   ),
                 ],
               ),
