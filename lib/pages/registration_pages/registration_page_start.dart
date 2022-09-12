@@ -16,15 +16,15 @@ class RegistrationPageStart extends StatefulWidget {
 class _RegistrationPageStartState extends State<RegistrationPageStart> {
   @override
   Widget build(BuildContext context) {
+    final Size h = MediaQuery.of(context).size;
     return Scaffold(
       body: CircularWrapper(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // Expanded(
-            //   flex: 1,
-            //   child: 
-              Column(
+            SizedBox(
+              height: h.height / 2.71515152,
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -49,11 +49,9 @@ class _RegistrationPageStartState extends State<RegistrationPageStart> {
                   ),
                 ],
               ),
-           // ),
-            // Expanded(
-            //   flex: 2,
-            //   child: 
-              Padding(
+            ),
+            Expanded(
+              child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -85,7 +83,7 @@ class _RegistrationPageStartState extends State<RegistrationPageStart> {
                   ],
                 ),
               ),
-          // ),
+            ),
           ],
         ),
       ),

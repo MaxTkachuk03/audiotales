@@ -5,10 +5,9 @@ import 'dart:core';
 import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/pages/main_page.dart';
 import 'package:audiotales/resouses/colors.dart';
+import 'package:audiotales/resouses/svg_picture.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:flutter/material.dart';
-
-import '../../resouses/images.dart';
 
 class RegistrationPageEnd extends StatefulWidget {
   const RegistrationPageEnd({Key? key}) : super(key: key);
@@ -84,7 +83,7 @@ class _RegistrationPageEndState extends State<RegistrationPageEnd> {
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(n / 20, m / 10, n / 20, 0),
-                    child: AppImages.heart,
+                    child: heart,
                   ),
                 ],
               ),

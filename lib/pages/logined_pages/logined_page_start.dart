@@ -1,8 +1,6 @@
-// ignore_for_file: file_names
-
 import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/resouses/colors.dart';
-import 'package:audiotales/resouses/images.dart';
+import 'package:audiotales/resouses/svg_picture.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:flutter/material.dart';
 
@@ -92,7 +90,7 @@ class _LoginedPageStartState extends State<LoginedPageStart> {
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(n / 20, m / 10, n / 20, 0),
-                    child: AppImages.heart,
+                    child: heart,
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(n / 20, m / 10, n / 20, 0),

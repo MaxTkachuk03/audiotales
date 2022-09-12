@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_start.dart';
 import 'package:audiotales/resouses/colors.dart';
-import 'package:audiotales/resouses/images.dart';
+import 'package:audiotales/resouses/fonts.dart';
+import 'package:audiotales/resouses/svg_picture.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,7 +16,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreen extends State<SplashScreen> {
-
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () {
@@ -29,7 +30,6 @@ class _SplashScreen extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double m = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -37,25 +37,31 @@ class _SplashScreen extends State<SplashScreen> {
         decoration: const BoxDecoration(
           gradient: gradient,
         ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                S.of(context).splashScreenText,
-                style: TextStyle(
-                  color: white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: m / 16,
-                  fontStyle: FontStyle.normal,
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            AutoSizeText(
+              S.of(context).splashScreenText,
+              maxLines: 1,
+              style: const TextStyle(
+                color: white,
+                fontWeight: AppFonts.bold,
+                fontSize: 50.0,
+                fontFamily: AppFonts.fontFamily,
+                shadows: [
+                  Shadow(
+                    color: shadowSplashScreen,
+                    offset: Offset(0, 4),
+                    blurRadius: 11.0,
+                  ),
+                ],
               ),
-              const Padding(
-                padding: EdgeInsets.all(10),
-              ),
-              AppImages.microphone,
-            ],
-          ),
+            ),
+            const SizedBox(height: 24.0),
+            microphone,
+          ],
         ),
+      ),
     );
   }
 }
