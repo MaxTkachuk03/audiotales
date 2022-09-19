@@ -29,3 +29,9 @@ const shadowForField = Color.fromRGBO(0, 0, 0, 0.11);
 const shadowCircular =  Color.fromRGBO(128, 119, 231, 0.2);
 
 const shadowSplashScreen = Color.fromRGBO(0, 0, 0, 0.08);
+
+const blackBottomBar = Color.fromRGBO(58, 58, 85, 0.8);
+
+const whiteBottomBar = Color.fromRGBO(0, 0, 0, 0.15);
+
+const lightBlack = Color.fromRGBO(58, 58, 85, 0.5);

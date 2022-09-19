@@ -210,10 +210,10 @@ class S {
     );
   }
 
-  /// `Регистрация привяжет твои сказки  к облаку, после чего они всегда будут с тобой`
+  /// `Регистрация привяжет твои сказки к облаку, после чего они всегда будут с тобой`
   String get hint {
     return Intl.message(
-      'Регистрация привяжет твои сказки  к облаку, после чего они всегда будут с тобой',
+      'Регистрация привяжет твои сказки к облаку, после чего они всегда будут с тобой',
       name: 'hint',
       desc: '',
       args: [],
@@ -235,6 +235,66 @@ class S {
     return Intl.message(
       'Взрослые иногда нуждаются в сказке даже больше, чем дети',
       name: 'adultText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Открыть все`
+  String get openAll {
+    return Intl.message(
+      'Открыть все',
+      name: 'openAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Как только ты запишешь аудио, она появится здесь.`
+  String get recordedAudio {
+    return Intl.message(
+      'Как только ты запишешь аудио, она появится здесь.',
+      name: 'recordedAudio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Здесь будет твой набор сказок`
+  String get set {
+    return Intl.message(
+      'Здесь будет твой набор сказок',
+      name: 'set',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Добавить`
+  String get add {
+    return Intl.message(
+      'Добавить',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Тут`
+  String get here {
+    return Intl.message(
+      'Тут',
+      name: 'here',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `И тут`
+  String get andHere {
+    return Intl.message(
+      'И тут',
+      name: 'andHere',
       desc: '',
       args: [],
     );

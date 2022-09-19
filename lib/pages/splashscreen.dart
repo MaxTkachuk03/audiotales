@@ -4,9 +4,10 @@ import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_start.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
-import 'package:audiotales/resouses/svg_picture.dart';
+import 'package:audiotales/resouses/icons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -58,7 +59,7 @@ class _SplashScreen extends State<SplashScreen> {
               ),
             ),
             const SizedBox(height: 24.0),
-            microphone,
+            SvgPicture.asset(AppIcons.microphone),
           ],
         ),
       ),

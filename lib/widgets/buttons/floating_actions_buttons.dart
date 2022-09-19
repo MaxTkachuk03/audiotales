@@ -2,6 +2,7 @@ import 'package:audiotales/pages/registration_pages/registration_page_code.dart'
 import 'package:audiotales/pages/registration_pages/registration_page_end.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_numbers.dart';
 import 'package:audiotales/resouses/colors.dart';
+import 'package:audiotales/resouses/fonts.dart';
 import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
@@ -21,17 +22,16 @@ class FloatingABWrapper extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const RegistrationPageNumbers()));
+                  builder: (context) => const RegistrationPageNumbers())); // what(const RegistrationPageStart())
         },
         label: Text(
           S.of(context).buttonText,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            color: white,
-            fontWeight: FontWeight.w400,
-            fontSize: 18.0,
-            fontStyle: FontStyle.normal,
-          ),
+              color: white,
+              fontWeight: AppFonts.regular,
+              fontSize: 18.0,
+              fontFamily: AppFonts.fontFamily),
         ),
       ),
     );
@@ -60,9 +60,9 @@ class FloatingABWrapperNumbers extends StatelessWidget {
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: white,
-            fontWeight: FontWeight.w400,
+             fontWeight: AppFonts.regular,
             fontSize: 18.0,
-            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.fontFamily
           ),
         ),
       ),
@@ -92,9 +92,9 @@ class FloatingABWrapperCode extends StatelessWidget {
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: white,
-            fontWeight: FontWeight.w400,
+            fontWeight: AppFonts.regular,
             fontSize: 18.0,
-            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.fontFamily
           ),
         ),
       ),

@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 class RegistrationPageStart extends StatefulWidget {
   const RegistrationPageStart({Key? key}) : super(key: key);
 
+  static const routeName = 'start';
+
   @override
   State<RegistrationPageStart> createState() => _RegistrationPageStartState();
 }
@@ -19,8 +21,8 @@ class _RegistrationPageStartState extends State<RegistrationPageStart> {
     final Size h = MediaQuery.of(context).size;
     return Scaffold(
       body: CircularWrapper(
+        color: purple,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
               height: h.height / 2.71515152,
@@ -35,7 +37,6 @@ class _RegistrationPageStartState extends State<RegistrationPageStart> {
                       color: white,
                       fontWeight: AppFonts.bold,
                       fontSize: 48.0,
-                      fontFamily: AppFonts.fontFamily,
                     ),
                   ),
                   AutoSizeText(
@@ -44,38 +45,37 @@ class _RegistrationPageStartState extends State<RegistrationPageStart> {
                       color: white,
                       fontWeight: AppFonts.regular,
                       fontSize: 14.0,
-                      fontFamily: AppFonts.fontFamily,
                     ),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 52.0),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  //mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    AutoSizeText(
                       S.of(context).hello,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: black,
                         fontWeight: AppFonts.regular,
                         fontSize: 24.0,
-                        fontFamily: AppFonts.fontFamily,
                       ),
                     ),
                     const SizedBox(height: 24.0),
-                    Text(
+                    AutoSizeText(
                       S.of(context).presentText,
                       textAlign: TextAlign.center,
+                      maxLines: 4,
                       style: const TextStyle(
                         color: black,
                         fontWeight: AppFonts.regular,
                         fontSize: 16.0,
-                        fontFamily: AppFonts.fontFamily,
                       ),
                     ),
                     const SizedBox(height: 48.0),

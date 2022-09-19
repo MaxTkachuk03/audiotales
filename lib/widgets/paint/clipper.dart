@@ -2,6 +2,12 @@ import 'package:audiotales/resouses/colors.dart';
 import 'package:flutter/widgets.dart';
 
 class RPSCustomPainter extends CustomPainter {
+  const RPSCustomPainter({
+    required this.color,
+  });
+
+  final Color color;
+
   @override
   void paint(Canvas canvas, Size size) {
     Path path_0 = Path();
@@ -23,7 +29,7 @@ class RPSCustomPainter extends CustomPainter {
     path_0.close();
 
     Paint paint0Fill = Paint()..style = PaintingStyle.fill;
-    paint0Fill.color = purple;
+    paint0Fill.color = color;
     canvas.drawPath(path_0, paint0Fill);
   }
 

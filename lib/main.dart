@@ -1,5 +1,7 @@
 
+import 'package:audiotales/pages/logined_pages/logined_page_start.dart';
 import 'package:audiotales/pages/splashscreen.dart';
+import 'package:audiotales/resouses/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
@@ -36,8 +38,9 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(), 
-      //const LoginedPageStart(),
+      theme: AppThemes.light(),
+       home: const SplashScreen(), 
+    //  const LoginedPageStart(),
     );
   }
 }
