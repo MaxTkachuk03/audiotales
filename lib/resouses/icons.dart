@@ -10,6 +10,9 @@ class AppIcons{
   static const String profile = '$_path/profile.svg';
   static const String microphone = '$_path/voice.svg';
   static const String heart = '$_path/stroke.svg';
-  static const String drawer = '$_path/drawer.svg';
   static const String arrow = '$_path/arrow.svg';
+  static const String search = '$_path/search.svg';
+  static const String delete = '$_path/delete.svg';
+  static const String wallet = '$_path/wallet.svg';
+  static const String edit = '$_path/edit.svg';
 }

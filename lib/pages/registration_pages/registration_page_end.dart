@@ -15,6 +15,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class RegistrationPageEnd extends StatefulWidget {
   const RegistrationPageEnd({Key? key}) : super(key: key);
 
+  static const routeName = '/audiotales/end';
+
   @override
   State<RegistrationPageEnd> createState() => _RegistrationPageEndState();
 }
@@ -22,13 +24,12 @@ class RegistrationPageEnd extends StatefulWidget {
 class _RegistrationPageEndState extends State<RegistrationPageEnd> {
   @override
   void initState() {
-    Timer(const Duration(seconds: 3), () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              //builder: (context) => const LoginedPageStart()));
-              builder: (context) => const MainPage()));
-    });
+    Timer(
+      const Duration(seconds: 3),
+      () {
+        Navigator.pushNamed(context, MainPage.routeName);
+      },
+    );
     super.initState();
   }
 
@@ -58,44 +59,44 @@ class _RegistrationPageEndState extends State<RegistrationPageEnd> {
               ),
             ),
             const SizedBox(height: 78.0),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
-              child: Column(
-                children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: shadow,
-                          offset: Offset(0.0, 4.0),
-                          blurRadius: 7.0,
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 21.0, vertical: 25.0),
-                      child: AutoSizeText(
-                        S.of(context).weGlad,
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        style: const TextStyle(
-                          color: black,
-                          fontWeight: AppFonts.regular,
-                          fontSize: 24.0,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: white,
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: shadow,
+                            offset: Offset(0.0, 4.0),
+                            blurRadius: 7.0,
+                          ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 21.0, vertical: 25.0),
+                        child: AutoSizeText(
+                          S.of(context).weGlad,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          style: const TextStyle(
+                            color: black,
+                            fontWeight: AppFonts.regular,
+                            fontSize: 24.0,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 59.0),
-                  SvgPicture.asset(AppIcons.heart),
-                ],
+                    const SizedBox(height: 59.0),
+                    SvgPicture.asset(AppIcons.heart),
+                  ],
+                ),
               ),
             ),
-          ),
           ],
         ),
       ),

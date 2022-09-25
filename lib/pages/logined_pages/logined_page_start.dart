@@ -10,6 +10,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class LoginedPageStart extends StatefulWidget {
   const LoginedPageStart({Key? key}) : super(key: key);
 
+  static const routeName = '/audiotales/logined';
+
   @override
   State<LoginedPageStart> createState() => _LoginedPageStartState();
 }
@@ -18,10 +20,7 @@ class _LoginedPageStartState extends State<LoginedPageStart> {
   // @override
   // void initState() {
   //   Timer(const Duration(seconds: 3), () {
-  //     Navigator.push(
-  //         context,
-  //         MaterialPageRoute(
-  //             builder: (context) => const LoginedPageStart()));
+  //     Navigator.pushNamed(context, MainPage.routeName);
   //   });
   //   super.initState();
   // }

@@ -26,17 +26,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "adultText": MessageLookupByLibrary.simpleMessage(
             "Взрослые иногда нуждаются в сказке даже больше, чем дети"),
         "after": MessageLookupByLibrary.simpleMessage("Позже"),
+        "allaudio": MessageLookupByLibrary.simpleMessage("Все аудиофайлы"),
         "andHere": MessageLookupByLibrary.simpleMessage("И тут"),
         "audiorecord": MessageLookupByLibrary.simpleMessage("Аудиозаписи"),
+        "audiotales": MessageLookupByLibrary.simpleMessage("Аудиосказки"),
         "buttonText": MessageLookupByLibrary.simpleMessage("Продолжить"),
         "code": MessageLookupByLibrary.simpleMessage(
             "Введи код из смс, чтобы мы тебя запомнили"),
+        "deleted": MessageLookupByLibrary.simpleMessage("Недавно удаленные"),
         "hello": MessageLookupByLibrary.simpleMessage("Привет!"),
         "here": MessageLookupByLibrary.simpleMessage("Тут"),
         "hint": MessageLookupByLibrary.simpleMessage(
             "Регистрация привяжет твои сказки к облаку, после чего они всегда будут с тобой"),
         "main": MessageLookupByLibrary.simpleMessage("Главная"),
+        "menu": MessageLookupByLibrary.simpleMessage("Меню"),
         "openAll": MessageLookupByLibrary.simpleMessage("Открыть все"),
+        "premium": MessageLookupByLibrary.simpleMessage("Подписка"),
         "presentText": MessageLookupByLibrary.simpleMessage(
             "Мы рады видеть тебя здесь.\n Это приложение поможет записывать сказки и держать их в удобном месте не заполняя память на телефоне"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
@@ -46,11 +51,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "registrInfo": MessageLookupByLibrary.simpleMessage(
             "Регистрация привяжет твои сказки к облаку, после чего они всегда будут с тобой"),
         "registration": MessageLookupByLibrary.simpleMessage("Регистрация"),
+        "search": MessageLookupByLibrary.simpleMessage("Поиск"),
         "selections": MessageLookupByLibrary.simpleMessage("Подборки"),
         "set": MessageLookupByLibrary.simpleMessage(
             "Здесь будет твой набор сказок"),
         "splashScreenText": MessageLookupByLibrary.simpleMessage("MemoryBox"),
         "superYou": MessageLookupByLibrary.simpleMessage("Ты супер!"),
+        "support":
+            MessageLookupByLibrary.simpleMessage("Написать в\n поддержку "),
         "telephoneText":
             MessageLookupByLibrary.simpleMessage("Введи номер телефона"),
         "underMemoryBox":

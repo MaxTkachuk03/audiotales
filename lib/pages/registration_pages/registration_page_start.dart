@@ -1,4 +1,5 @@
 import 'package:audiotales/generated/l10n.dart';
+import 'package:audiotales/pages/registration_pages/registration_page_numbers.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
 import 'package:audiotales/widgets/buttons/floating_actions_buttons.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/material.dart';
 class RegistrationPageStart extends StatefulWidget {
   const RegistrationPageStart({Key? key}) : super(key: key);
 
-  static const routeName = 'start';
+  static const routeName = '/registration_pages/registration_page_start';
 
   @override
   State<RegistrationPageStart> createState() => _RegistrationPageStartState();
@@ -79,7 +80,12 @@ class _RegistrationPageStartState extends State<RegistrationPageStart> {
                       ),
                     ),
                     const SizedBox(height: 48.0),
-                    const FloatingABWrapper(),
+                    FloatingABWrapper(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RegistrationPageNumbers.routeName);
+                      },
+                    ),
                   ],
                 ),
               ),

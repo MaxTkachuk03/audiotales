@@ -2,18 +2,18 @@ import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
 import 'package:audiotales/resouses/icons.dart';
-import 'package:audiotales/widgets/buttons/icon_buttons.dart';
-import 'package:audiotales/widgets/navigation/bottomnavigator.dart';
+import 'package:audiotales/widgets/navigation/custom_bottomnavigator.dart';
 import 'package:audiotales/widgets/navigation/drawer.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
+
+  static const routeName = '/audiotales/main';
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -26,19 +26,26 @@ class _MainPageState extends State<MainPage> {
     super.initState();
   }
 
+  final int _selectPage = 2;
+
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawerScrimColor: white,
-      drawerEdgeDragWidth: 30.0,
-      // appBar: AppBar(
-      //   backgroundColor: purple,
-      // ),
-      drawerDragStartBehavior: DragStartBehavior.start,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: purple,
+      ),
       drawer: const NavigationDrawer(),
-      //backgroundColor: Colors.amber,
-      bottomNavigationBar: const BottomBar(),
+      bottomNavigationBar: //const BottomBar(),
+          BottomBar(
+        currentTab: _selectPage,
+        onSelected: () {
+          setState(() {
+            _selectPage;
+          });
+        },
+      ),
       body: CircularWrapper(
         color: purple,
         child: Column(

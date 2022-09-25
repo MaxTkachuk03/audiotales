@@ -24,7 +24,7 @@ const green = Color.fromRGBO(113, 165, 159, 0.7);
 
 const shadow = Color.fromRGBO(0, 0, 0, 0.11);
 
-const shadowForField = Color.fromRGBO(0, 0, 0, 0.11);
+const shadowForDrawer = Color.fromRGBO(0, 0, 0, 0.25);
 
 const shadowCircular =  Color.fromRGBO(128, 119, 231, 0.2);
 

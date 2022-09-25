@@ -12,6 +12,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
+  static const routeName = '/';
+
   @override
   State<SplashScreen> createState() => _SplashScreen();
 }
@@ -20,11 +22,7 @@ class _SplashScreen extends State<SplashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              //builder: (context) => const LoginedPageStart()));
-              builder: (context) => const RegistrationPageStart()));
+      Navigator.pushNamed(context, RegistrationPageStart.routeName);
     });
     super.initState();
   }

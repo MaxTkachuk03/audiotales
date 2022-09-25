@@ -1,4 +1,3 @@
-import 'package:audiotales/resouses/colors.dart';
 import 'package:flutter/widgets.dart';
 
 class RPSCustomPainter extends CustomPainter {

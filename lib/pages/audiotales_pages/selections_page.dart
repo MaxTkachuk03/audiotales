@@ -1,3 +1,4 @@
+import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +13,9 @@ class _SelectionsState extends State<Selections> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: CircularWrapper(child: Column()
-      // ),
+      body: CircularWrapper(color: green,
+      child: Column()
+      ),
     );
   }
 }
