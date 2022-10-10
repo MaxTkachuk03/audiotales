@@ -7,10 +7,12 @@ import '../../generated/l10n.dart';
 class FloatingABWrapper extends StatelessWidget {
   const FloatingABWrapper({
     required this.onTap,
+    required this.text,
     Key? key,
   }) : super(key: key);
 
   final VoidCallback onTap;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +24,14 @@ class FloatingABWrapper extends StatelessWidget {
         backgroundColor: orange,
         onPressed: onTap,
         label: Text(
-          S.of(context).buttonText,
+          text,
           textAlign: TextAlign.center,
           style: const TextStyle(
-              color: white,
-              fontWeight: AppFonts.regular,
-              fontSize: 18.0,
-              fontFamily: AppFonts.fontFamily),
+            color: white,
+            fontWeight: AppFonts.regular,
+            fontSize: 18.0,
+            fontFamily: AppFonts.fontFamily,
+          ),
         ),
       ),
     );

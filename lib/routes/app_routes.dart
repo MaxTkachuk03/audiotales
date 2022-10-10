@@ -1,4 +1,10 @@
-import 'package:audiotales/pages/logined_pages/logined_page_start.dart';
+import 'package:audiotales/pages/audiotales_pages/audiorecords_page.dart';
+import 'package:audiotales/pages/audiotales_pages/edit_page.dart';
+import 'package:audiotales/pages/audiotales_pages/premium_page.dart';
+import 'package:audiotales/pages/audiotales_pages/record_page.dart';
+import 'package:audiotales/pages/logined_page_start.dart';
+import 'package:audiotales/pages/audiotales_pages/profile_page.dart';
+import 'package:audiotales/pages/audiotales_pages/selections_page.dart';
 import 'package:audiotales/pages/main_page.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_code.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_end.dart';
@@ -31,6 +37,24 @@ class AppRouter {
         break;
       case MainPage.routeName:
         builder = (_) => const MainPage();
+        break;
+      case Profile.routeName:
+        builder = (_) => const Profile();
+        break;
+      case Selections.routeName:
+        builder = (_) => const Selections();
+        break;
+      case RecordPage.routeName:
+        builder = (_) => const RecordPage();
+        break;
+      case Audiorecords.routeName:
+        builder = (_) => const Audiorecords();
+        break;
+      case EditPage.routeName:
+        builder = (_) => const EditPage();
+        break;
+      case PremiumPage.routeName:
+        builder = (_) => const PremiumPage();
         break;
 
       default:

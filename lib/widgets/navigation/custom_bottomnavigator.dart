@@ -1,20 +1,40 @@
+import 'package:audiotales/pages/audiotales_pages/audiorecords_page.dart';
+import 'package:audiotales/pages/audiotales_pages/profile_page.dart';
+import 'package:audiotales/pages/audiotales_pages/record_page.dart';
 import 'package:audiotales/resouses/fonts.dart';
 import 'package:audiotales/resouses/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../generated/l10n.dart';
+import '../../pages/audiotales_pages/selections_page.dart';
+import '../../pages/main_page.dart';
 import '../../resouses/colors.dart';
 
-class BottomBar extends StatelessWidget {
+class BottomBar extends StatefulWidget {
   const BottomBar({
-    required this.currentTab,
-    required this.onSelected,
+    // required this.currentTab,
+    // required this.onSelected,
     super.key,
   });
 
-  final int currentTab;
-  final void Function() onSelected;
+  // final
+  // final void Function() onSelected;
+
+  @override
+  State<BottomBar> createState() => _BottomBarState();
+}
+
+class _BottomBarState extends State<BottomBar> {
+  int currentTab = 0;
+
+  List<String> widgets = [
+    MainPage.routeName,
+    Selections.routeName,
+    RecordPage.routeName,
+    Audiorecords.routeName,
+    Profile.routeName,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,58 +45,69 @@ class BottomBar extends StatelessWidget {
       decoration: const BoxDecoration(
         color: white,
         borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20.0), topLeft: Radius.circular(20.0)),
+          topRight: Radius.circular(20.0),
+          topLeft: Radius.circular(20.0),
+        ),
         boxShadow: [
           BoxShadow(
-              color: whiteBottomBar,
-              offset: Offset(0.0, 4.0),
-              blurRadius: 50.0,
-              spreadRadius: 10.0),
+            color: whiteBottomBar,
+            offset: Offset(0.0, 4.0),
+            blurRadius: 50.0,
+            spreadRadius: 10.0,
+          ),
         ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Spacer(flex:3),
+          const Spacer(flex: 3),
           //const SizedBox(width: 5.0),
-          BottomBarItem(
+          _BottomBarItem(
             icon: SvgPicture.asset(
               AppIcons.home,
-              color: currentTab==0 ? purple : blackBottomBar,
+              color: currentTab == 0 ? purple : blackBottomBar,
             ),
             title: Text(
               S.of(context).main,
               style: TextStyle(
-                  color: currentTab==0 ? purple : blackBottomBar,
-                  fontWeight: AppFonts.regular,
-                  height: .5,
-                  //inherit: true,
-                  fontSize: 10.0),
+                color: currentTab == 0 ? purple : blackBottomBar,
+                fontWeight: AppFonts.regular,
+                height: .5,
+                //inherit: true,
+                fontSize: 10.0,
+              ),
             ),
-            selected: currentTab==0, 
-            onSelect: onSelected,
+            selected: currentTab == 0,
+            onSelect: () {
+                currentTab = 0 ;
+                Navigator.pushNamed(context, widgets.elementAt(currentTab));
+            },
           ),
           //const SizedBox(width: 5.0),
           const Spacer(flex: 4),
-          BottomBarItem(
+          _BottomBarItem(
             icon: SvgPicture.asset(
               AppIcons.category,
-              color: currentTab==1 ? purple : blackBottomBar,
+              color: currentTab  == 1 ? purple : blackBottomBar,
             ),
             title: Text(
               S.of(context).selections,
               style: TextStyle(
-                  color: currentTab==1 ? purple : blackBottomBar,
-                  fontWeight: AppFonts.regular,
-                  height: .5,
-                  fontSize: 10.0),
+                color: currentTab == 1 ? purple : blackBottomBar,
+                fontWeight: AppFonts.regular,
+                height: .5,
+                fontSize: 10.0,
+              ),
             ),
-            selected: currentTab==1,
-            onSelect: onSelected,
+            selected: currentTab == 1,
+            onSelect: () {
+                currentTab = 1;
+                Navigator.pushNamed(context, widgets.elementAt(currentTab));
+            },
           ),
           // SizedBox(width: 5.0),
           const Spacer(flex: 5),
-          BottomBarItem(
+          _BottomBarItem(
             icon: SvgPicture.asset(
               AppIcons.micro,
               // color: on ? purple : blackBottomBar,
@@ -84,49 +115,61 @@ class BottomBar extends StatelessWidget {
             title: Text(
               S.of(context).record,
               style: const TextStyle(
-                  color: orange,
-                  fontWeight: AppFonts.regular,
-                  height: 1.0,
-                  fontSize: 10.0),
+                color: orange,
+                fontWeight: AppFonts.regular,
+                height: 1.0,
+                fontSize: 10.0,
+              ),
             ),
-            selected: currentTab==2,
-            onSelect: onSelected,
+            selected: currentTab == 2,
+            onSelect: () {
+              currentTab = 2;
+              Navigator.pushNamed(context, widgets.elementAt(currentTab));
+            },
           ),
           //const SizedBox(width: 5.0),
           const Spacer(flex: 3),
-          BottomBarItem(
+          _BottomBarItem(
             icon: SvgPicture.asset(
               AppIcons.paper,
-              color: currentTab==3 ? purple : blackBottomBar,
+              color: currentTab == 3 ? purple : blackBottomBar,
             ),
             title: Text(
               S.of(context).audiorecord,
               style: TextStyle(
-                  color: currentTab==3 ? purple : blackBottomBar,
-                  fontWeight: AppFonts.regular,
-                  height: .5,
-                  fontSize: 10.0),
+                color: currentTab == 3 ? purple : blackBottomBar,
+                fontWeight: AppFonts.regular,
+                height: .5,
+                fontSize: 10.0,
+              ),
             ),
-            selected: currentTab==3,
-            onSelect: onSelected,
+            selected: currentTab == 3,
+            onSelect: () {
+              currentTab = 3;
+              Navigator.pushNamed(context, widgets.elementAt(currentTab));
+            },
           ),
           //const SizedBox(width: 5.0),
           const Spacer(flex: 2),
-          BottomBarItem(
+          _BottomBarItem(
             icon: SvgPicture.asset(
               AppIcons.profile,
-              color: currentTab==4 ? purple : blackBottomBar,
+              color: currentTab == 4 ? purple : blackBottomBar,
             ),
             title: Text(
               S.of(context).profile,
               style: TextStyle(
-                  color: currentTab==4 ? purple : blackBottomBar,
-                  fontWeight: AppFonts.regular,
-                  height: .5,
-                  fontSize: 10.0),
+                color: currentTab == 4 ? purple : blackBottomBar,
+                fontWeight: AppFonts.regular,
+                height: .5,
+                fontSize: 10.0,
+              ),
             ),
-            selected: currentTab==4,
-            onSelect: onSelected,
+            selected: currentTab == 4,
+            onSelect: () {
+              currentTab = 4;
+              Navigator.pushNamed(context, widgets.elementAt(currentTab));
+            },
           ),
           const Spacer(flex: 2),
           //const SizedBox(width: 5.0),
@@ -136,14 +179,14 @@ class BottomBar extends StatelessWidget {
   }
 }
 
-class BottomBarItem extends StatelessWidget {
-  const BottomBarItem({
-    super.key,
+class _BottomBarItem extends StatelessWidget {
+  const _BottomBarItem({
     required this.icon,
     required this.title,
-    required this.selected, 
+    required this.selected,
     required this.onSelect,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final Widget icon;
   final Widget title;
@@ -155,9 +198,7 @@ class BottomBarItem extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-       //const Spacer(),
         IconButton(
-          //color: selected ? purple : blackBottomBar,
           onPressed: onSelect,
           icon: icon,
           iconSize: 46.0,
@@ -165,7 +206,6 @@ class BottomBarItem extends StatelessWidget {
           alignment: Alignment.center,
         ),
         title,
-       //const Spacer(),
       ],
     );
   }

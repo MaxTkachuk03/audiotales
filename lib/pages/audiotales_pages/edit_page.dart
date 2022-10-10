@@ -1,32 +1,32 @@
 import 'package:audiotales/generated/l10n.dart';
+import 'package:audiotales/pages/audiotales_pages/profile_page.dart';
 import 'package:audiotales/resouses/borders.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
+import 'package:audiotales/resouses/icons.dart';
 import 'package:audiotales/resouses/images.dart';
 import 'package:audiotales/widgets/buttons/text_buttons.dart';
 import 'package:audiotales/widgets/navigation/custom_bottomnavigator.dart';
 import 'package:audiotales/widgets/navigation/drawer.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+import 'package:flutter_svg/svg.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class EditPage extends StatefulWidget {
+  const EditPage({super.key});
 
-  static const routeName = '/audiotales/profile';
+  static const routeName = '/audiotales/edit';
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<EditPage> createState() => _EditPageState();
 }
 
-class _ProfileState extends State<Profile> {
+class _EditPageState extends State<EditPage> {
   @override
   void initState() {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ));
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     super.initState();
   }
 
@@ -36,34 +36,51 @@ class _ProfileState extends State<Profile> {
     final double w = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        excludeHeaderSemantics: false,
-        centerTitle: true,
-        title: Text(
-          S.of(context).profile,
-          style: const TextStyle(
-            color: white,
-            fontWeight: AppFonts.bold,
-            fontFamily: AppFonts.fontFamily,
-            fontSize: 36.0,
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: purple,
-      ),
-      drawer: NavigationDrawer(),
       bottomNavigationBar: const BottomBar(),
       body: CircularWrapper(
         color: purple,
         height: h / 2.4,
         shadow: const BoxShadow(
-          color: purpleCircularShadow,
+          color: shadowCircular,
           offset: Offset(0.0, 4.0),
-          blurRadius: 25.0,
+          blurRadius: 35.0,
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const Spacer(),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Profile.routeName);
+                  },
+                  padding: const EdgeInsets.all(0),
+                  icon: SvgPicture.asset(
+                    AppIcons.back,
+                  ),
+                ),
+                const Spacer(
+                  flex: 3,
+                ),
+                //const SizedBox(width: 45,),
+                Text(
+                  S.of(context).profile,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: white,
+                    fontWeight: AppFonts.bold,
+                    fontFamily: AppFonts.fontFamily,
+                    fontSize: 36.0,
+                  ),
+                ),
+                const Spacer(
+                  flex: 12,
+                ),
+              ],
+            ),
             Text(
               S.of(context).yourpiece,
               textAlign: TextAlign.center,
@@ -74,20 +91,12 @@ class _ProfileState extends State<Profile> {
                 fontSize: 16.0,
               ),
             ),
-            //const Spacer(flex: 1,),
             const SizedBox(
-              height: 24,
+              height: 64,
             ),
             Container(
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                boxShadow: [
-                  BoxShadow(
-                    color: pictureShadow,
-                    offset: Offset(0.0, 10.0),
-                    blurRadius: 20.0,
-                  ),
-                ],
               ),
               child: Image.asset(
                 AppImages.profile,
@@ -95,10 +104,9 @@ class _ProfileState extends State<Profile> {
                 height: h / 4,
               ),
             ),
-            //const Spacer(),
-            const SizedBox(
-              height: 14,
-            ),
+            // const SizedBox(
+            //   height: 40,
+            // ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -106,16 +114,39 @@ class _ProfileState extends State<Profile> {
                 ),
                 child: Column(
                   children: [
-                    const Text(
-                      "Kolya",
-                      style: TextStyle(
-                        color: black,
-                        fontWeight: AppFonts.regular,
-                        fontFamily: AppFonts.fontFamily,
-                        fontSize: 24.0,
+                    const Spacer(
+                      flex: 2,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 70.0,
+                      ),
+                      child: TextField(
+                        cursorColor: blackCursor,
+                        cursorWidth: 1.0,
+                        decoration: InputDecoration(
+                          border: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: lightBlack,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: lightBlack,
+                            ),
+                          ),
+                        ),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: black,
+                          fontWeight: AppFonts.regular,
+                          fontSize: 24.0,
+                        ),
                       ),
                     ),
-                    const Spacer(),
+                    const Spacer(
+                      flex: 4,
+                    ),
                     // const SizedBox(
                     //   height: 24,
                     // ),
@@ -132,6 +163,7 @@ class _ProfileState extends State<Profile> {
                         ],
                       ),
                       child: TextField(
+                        cursorColor: lightBlack,
                         decoration: const InputDecoration(
                           contentPadding: EdgeInsets.all(10.0),
                           fillColor: white,
@@ -154,43 +186,14 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     const Spacer(),
-                    const TextButtonEdit(),
-                    const Spacer(),
-                    const TextButtonPremium(),
-                    const Spacer(),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: const LinearProgressIndicator(
-                        value: 0.3,
-                        minHeight: 24.0,
-                        backgroundColor: white,
-                        color: orange,
-                      ),
-                    ),
-                    const Text(
-                      "150/500",
-                      style: TextStyle(
-                        color: black,
-                        fontWeight: AppFonts.regular,
-                        fontFamily: AppFonts.fontFamily,
-                        fontSize: 14.0,
-                      ),
+                    const TextButtonSave(),
+                    const Spacer(
+                      flex: 2,
                     ),
                   ],
                 ),
               ),
             ),
-            //const Spacer(flex: 3),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                TextButtonQuit(),
-                TextButtonDeleteAccount(),
-              ],
-            ),
-            //const Spacer(),
           ],
         ),
       ),

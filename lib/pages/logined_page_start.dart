@@ -27,10 +27,16 @@ class _LoginedPageStartState extends State<LoginedPageStart> {
 
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
+    final double h = MediaQuery.of(context).size.height;
     return Scaffold(
       body: CircularWrapper(
         color: purple,
+        height: h / 2.71515152,
+        shadow: const BoxShadow(
+          color: shadowCircular,
+          offset: Offset(0.0, 4.0),
+          blurRadius: 35.0,
+        ),
         child: Column(
           children: [
             SizedBox(

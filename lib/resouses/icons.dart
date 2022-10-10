@@ -15,4 +15,8 @@ class AppIcons{
   static const String delete = '$_path/delete.svg';
   static const String wallet = '$_path/wallet.svg';
   static const String edit = '$_path/edit.svg';
+  static const String back = '$_path/backbutton.svg';
+  static const String upload = '$_path/cil_cloud-upload.svg';
+  static const String infinity = '$_path/infinity.svg';
+  static const String paperdownload = '$_path/paperdownload.svg';
 }

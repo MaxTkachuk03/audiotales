@@ -4,38 +4,36 @@ import 'package:audiotales/widgets/navigation/drawer.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:flutter/material.dart';
 
-class Selections extends StatefulWidget {
-  const Selections({super.key});
+class Audiorecords extends StatefulWidget {
+  const Audiorecords({super.key});
 
-  static const routeName = '/audiotales/selections';
+  static const routeName = '/audiotales/audiorecords';
 
   @override
-  State<Selections> createState() => _SelectionsState();
+  State<Audiorecords> createState() => _AudiorecordsState();
 }
 
-class _SelectionsState extends State<Selections> {
+class _AudiorecordsState extends State<Audiorecords> {
   @override
   Widget build(BuildContext context) {
     final double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: greenCircular,
+        backgroundColor: blueCircular,
       ),
       drawer: NavigationDrawer(),
-      bottomNavigationBar: const BottomBar(
-      ),
+      bottomNavigationBar: const BottomBar(),
       body: CircularWrapper(
-        color: greenCircular,
-        height: h / 2.4,
+        color: blueCircular,
+        height: h / 2.7,
         shadow: const BoxShadow(
-          color: greenCircularShadow,
+          color: blueCircularShadow,
           offset: Offset(0.0, 4.0),
           blurRadius: 25.0,
         ),
         child: Column(children: []),
       ),
     );
-  
   }
 }

@@ -19,14 +19,20 @@ class RegistrationPageStart extends StatefulWidget {
 class _RegistrationPageStartState extends State<RegistrationPageStart> {
   @override
   Widget build(BuildContext context) {
-    final Size h = MediaQuery.of(context).size;
+    final double h = MediaQuery.of(context).size.height;
     return Scaffold(
       body: CircularWrapper(
         color: purple,
+        height: h / 2.4,
+        shadow: const BoxShadow(
+          color: shadowCircular,
+          offset: Offset(0.0, 4.0),
+          blurRadius: 35.0,
+        ),
         child: Column(
           children: [
             SizedBox(
-              height: h.height / 2.71515152,
+              height: h / 2.4,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -85,6 +91,7 @@ class _RegistrationPageStartState extends State<RegistrationPageStart> {
                         Navigator.pushNamed(
                             context, RegistrationPageNumbers.routeName);
                       },
+                      text: S.of(context).buttonText,
                     ),
                   ],
                 ),

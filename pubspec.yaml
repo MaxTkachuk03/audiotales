@@ -42,6 +42,7 @@ dependencies:
   flutter_multi_formatter: ^2.7.2
   auto_size_text: ^3.0.0
   bottom_navy_bar: ^6.0.0
+  sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:
   flutter_lints: ^2.0.1

@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'dart:async';
 import 'dart:core';
 import 'package:audiotales/generated/l10n.dart';
@@ -27,7 +25,10 @@ class _RegistrationPageEndState extends State<RegistrationPageEnd> {
     Timer(
       const Duration(seconds: 3),
       () {
-        Navigator.pushNamed(context, MainPage.routeName);
+        Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil(
+          MainPage.routeName,
+          (g) => false,
+        );
       },
     );
     super.initState();
@@ -36,68 +37,80 @@ class _RegistrationPageEndState extends State<RegistrationPageEnd> {
   @override
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: CircularWrapper(
-        color: purple,
-        child: Column(
-          children: [
-            SizedBox(
-              height: h / 2.71515152,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AutoSizeText(
-                    S.of(context).superYou,
-                    style: const TextStyle(
-                      color: white,
-                      fontWeight: AppFonts.bold,
-                      fontSize: 48.0,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 78.0),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+      body: WillPopScope(
+        onWillPop: () async {
+          return false;
+        },
+        child: CircularWrapper(
+          color: purple,
+          height: h / 2.4,
+          shadow: const BoxShadow(
+            color: shadowCircular,
+            offset: Offset(0.0, 4.0),
+            blurRadius: 35.0,
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: h / 2.4,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      decoration: const BoxDecoration(
+                    AutoSizeText(
+                      S.of(context).superYou,
+                      style: const TextStyle(
                         color: white,
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: shadow,
-                            offset: Offset(0.0, 4.0),
-                            blurRadius: 7.0,
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 21.0, vertical: 25.0),
-                        child: AutoSizeText(
-                          S.of(context).weGlad,
-                          textAlign: TextAlign.center,
-                          maxLines: 1,
-                          style: const TextStyle(
-                            color: black,
-                            fontWeight: AppFonts.regular,
-                            fontSize: 24.0,
-                          ),
-                        ),
+                        fontWeight: AppFonts.bold,
+                        fontSize: 48.0,
                       ),
                     ),
-                    const SizedBox(height: 59.0),
-                    SvgPicture.asset(AppIcons.heart),
                   ],
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 78.0),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: white,
+                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: shadow,
+                              offset: Offset(0.0, 4.0),
+                              blurRadius: 7.0,
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 21.0, vertical: 25.0),
+                          child: AutoSizeText(
+                            S.of(context).weGlad,
+                            textAlign: TextAlign.center,
+                            maxLines: 1,
+                            style: const TextStyle(
+                              color: black,
+                              fontWeight: AppFonts.regular,
+                              fontSize: 24.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 59.0),
+                      SvgPicture.asset(AppIcons.heart),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

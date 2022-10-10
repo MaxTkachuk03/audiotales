@@ -7,33 +7,35 @@ class CircularWrapper extends StatelessWidget {
   const CircularWrapper({
     required this.child,
     required this.color,
+    required this.height,
+    required this.shadow,
     super.key,
   });
 
   final Widget child;
-  final Color color ;
+  final Color color;
+  final double height;
+  final BoxShadow shadow;
 
   @override
   Widget build(BuildContext context) {
     final Size m = MediaQuery.of(context).size;
-    final Size h = MediaQuery.of(context).size;
     return Stack(
       alignment: AlignmentDirectional.topCenter,
       children: [
         Container(
-          decoration: const BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: shadowCircular,
-                  offset: Offset(0.0, 4.0),
-                  blurRadius: 35.0,
-                ),
-              ]),
+          decoration: BoxDecoration(
+            boxShadow: [
+              shadow,
+            ],
+          ),
           child: CustomPaint(
             size: Size(
-                m.width,
-                //h.height / 3,
-                h.height / 2.71515152),
+              m.width,
+              height,
+              //h.height / 3,
+              // h.height / 2.71515152
+            ),
             painter: RPSCustomPainter(color: color),
           ),
         ),

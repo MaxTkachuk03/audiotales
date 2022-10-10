@@ -30,10 +30,16 @@ class _RegistrationPageStartState extends State<RegistrationPageNumbers> {
       resizeToAvoidBottomInset: false,
       body: CircularWrapper(
         color: purple,
+        height: h / 2.4,
+        shadow: const BoxShadow(
+          color: shadowCircular,
+          offset: Offset(0.0, 4.0),
+          blurRadius: 35.0,
+        ),
         child: Column(
           children: [
             SizedBox(
-              height: h / 2.71515152,
+              height: h / 2.4,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -49,102 +55,104 @@ class _RegistrationPageStartState extends State<RegistrationPageNumbers> {
                 ],
               ),
             ),
-             Expanded(
-            //flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
-              child: Column(
-                children: [
-                  AutoSizeText(
-                    S.of(context).telephoneText,
-                    style: const TextStyle(
-                      color: black,
-                      fontWeight: AppFonts.regular,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.all(Radius.circular(41.0)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: shadow,
-                          offset: Offset(0.0, 4.0),
-                          blurRadius: 11.0,
-                        ),
-                      ],
-                    ),
-                    child: TextField(
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        fillColor: white,
-                        filled: true,
-                        focusedBorder: border,
-                        enabledBorder: border,
-                        border: border,
-                      ),
-                      keyboardType: TextInputType.phone,
-                      inputFormatters: [
-                        // MaskedInputFormatter('+## (###) ### ### #'),
-                        PhoneInputFormatter(),
-                      ],
-                      textAlign: TextAlign.center,
+            Expanded(
+              //flex: 3,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: Column(
+                  children: [
+                    AutoSizeText(
+                      S.of(context).telephoneText,
                       style: const TextStyle(
                         color: black,
                         fontWeight: AppFonts.regular,
-                        fontSize: 20.0,
+                        fontSize: 16.0,
                       ),
                     ),
-                  ),
-                  const Spacer(flex: 3),
-                  FloatingABWrapper(
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: white,
+                        borderRadius: BorderRadius.all(Radius.circular(41.0)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: shadow,
+                            offset: Offset(0.0, 4.0),
+                            blurRadius: 11.0,
+                          ),
+                        ],
+                      ),
+                      child: TextField(
+                        cursorColor: lightBlack,
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(10.0),
+                          fillColor: white,
+                          filled: true,
+                          focusedBorder: border,
+                          enabledBorder: border,
+                          border: border,
+                        ),
+                        keyboardType: TextInputType.phone,
+                        inputFormatters: [
+                          // MaskedInputFormatter('+## (###) ### ### #'),
+                          PhoneInputFormatter(),
+                        ],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: black,
+                          fontWeight: AppFonts.regular,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ),
+                    const Spacer(flex: 3),
+                    FloatingABWrapper(
                       onTap: () {
                         Navigator.pushNamed(
                             context, RegistrationPageCode.routeName);
                       },
+                      text: S.of(context).buttonText,
                     ),
-                  //const Spacer(),
-                  const SizedBox(height: 24.0),
-                  const TextButtonWapper(),
-                  //const Spacer(),
-                  const SizedBox(height: 29.0),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: shadow,
-                          offset: Offset(0.0, 4.0),
-                          blurRadius: 7.0,
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 21.0, //),
-                          vertical: 25.0),
-                      child: AutoSizeText(
-                        S.of(context).hint,
-                        textAlign: TextAlign.center,
-                        maxLines: 3,
-                        style: const TextStyle(
-                          color: black,
-                          fontWeight: AppFonts.regular,
-                          fontSize: 14.0,
+                    //const Spacer(),
+                    const SizedBox(height: 24.0),
+                    const TextButtonWapper(),
+                    //const Spacer(),
+                    const SizedBox(height: 29.0),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: white,
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: shadow,
+                            offset: Offset(0.0, 4.0),
+                            blurRadius: 7.0,
+                          ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 21.0, //),
+                            vertical: 25.0),
+                        child: AutoSizeText(
+                          S.of(context).hint,
+                          textAlign: TextAlign.center,
+                          maxLines: 3,
+                          style: const TextStyle(
+                            color: black,
+                            fontWeight: AppFonts.regular,
+                            fontSize: 14.0,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const Spacer()
-                ],
+                    const Spacer()
+                  ],
+                ),
               ),
             ),
-          ),
           ],
         ),
       ),

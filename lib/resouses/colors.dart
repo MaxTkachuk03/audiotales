@@ -35,3 +35,21 @@ const blackBottomBar = Color.fromRGBO(58, 58, 85, 0.8);
 const whiteBottomBar = Color.fromRGBO(0, 0, 0, 0.15);
 
 const lightBlack = Color.fromRGBO(58, 58, 85, 0.5);
+
+const greenCircular = Color.fromRGBO(113, 165, 159, 1);
+
+const blueCircular = Color.fromRGBO(94, 119, 206, 1);
+
+const purpleCircularShadow = Color.fromRGBO(255, 218, 121, 0.2);
+
+const greenCircularShadow = Color.fromRGBO(129, 167, 111, 0.2);
+
+const blueCircularShadow = Color.fromRGBO(94, 119, 206, 0.2);
+
+const pictureShadow = Color.fromRGBO(0, 0, 0, 0.17);
+
+const red = Color.fromRGBO(226, 119, 119, 1);
+
+const blackCursor = Color.fromRGBO(64, 64, 64, 1);
+
+const premiumShadow = Color.fromRGBO(0, 0, 0, 0.1);

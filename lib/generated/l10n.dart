@@ -369,6 +369,176 @@ class S {
       args: [],
     );
   }
+
+  /// `Твоя частичка`
+  String get yourpiece {
+    return Intl.message(
+      'Твоя частичка',
+      name: 'yourpiece',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Редактировать`
+  String get edit {
+    return Intl.message(
+      'Редактировать',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выйти из приложения`
+  String get quit {
+    return Intl.message(
+      'Выйти из приложения',
+      name: 'quit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Удалить аккаунт`
+  String get deleteAccount {
+    return Intl.message(
+      'Удалить аккаунт',
+      name: 'deleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сохранить`
+  String get save {
+    return Intl.message(
+      'Сохранить',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Расширь возможности`
+  String get extendsOpportunities {
+    return Intl.message(
+      'Расширь возможности',
+      name: 'extendsOpportunities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выбери подписку`
+  String get changePremium {
+    return Intl.message(
+      'Выбери подписку',
+      name: 'changePremium',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Что дает подписка:`
+  String get whatGivePremium {
+    return Intl.message(
+      'Что дает подписка:',
+      name: 'whatGivePremium',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Неограниченая память`
+  String get infinityMemory {
+    return Intl.message(
+      'Неограниченая память',
+      name: 'infinityMemory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Все файлы хранятся в облаке`
+  String get allFilesSavedonCloud {
+    return Intl.message(
+      'Все файлы хранятся в облаке',
+      name: 'allFilesSavedonCloud',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Возможность скачивать без ограничений`
+  String get downloadwithoutlimites {
+    return Intl.message(
+      'Возможность скачивать без ограничений',
+      name: 'downloadwithoutlimites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `300р \n в месяц`
+  String get price300 {
+    return Intl.message(
+      '300р \n в месяц',
+      name: 'price300',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1800р \n в год`
+  String get price1800 {
+    return Intl.message(
+      '1800р \n в год',
+      name: 'price1800',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Подписаться на месяц`
+  String get premiumMounce {
+    return Intl.message(
+      'Подписаться на месяц',
+      name: 'premiumMounce',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Подписаться на год`
+  String get premiumYear {
+    return Intl.message(
+      'Подписаться на год',
+      name: 'premiumYear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Точно удалить аккаунт?`
+  String get youSure {
+    return Intl.message(
+      'Точно удалить аккаунт?',
+      name: 'youSure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Все аудиофайлы исчезнут и \n восстановить аккаунт будет \n невозможно`
+  String get allAudiowillVanish {
+    return Intl.message(
+      'Все аудиофайлы исчезнут и \n восстановить аккаунт будет \n невозможно',
+      name: 'allAudiowillVanish',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
