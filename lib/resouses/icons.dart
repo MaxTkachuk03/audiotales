@@ -19,4 +19,7 @@ class AppIcons{
   static const String upload = '$_path/cil_cloud-upload.svg';
   static const String infinity = '$_path/infinity.svg';
   static const String paperdownload = '$_path/paperdownload.svg';
+  static const String premium = '$_path/circul.svg';
+  static const String nonepremium = '$_path/circular_empty.svg';
+  static const String recording = '$_path/recording.svg';
 }

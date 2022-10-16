@@ -18,23 +18,31 @@ class BottomBar extends StatefulWidget {
     super.key,
   });
 
-  // final
-  // final void Function() onSelected;
+  //  final int currentTab
+  //  final void Function() onSelected;
 
   @override
   State<BottomBar> createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
+  // const BottomBar({
+  //   required this.currentTab,
+  //   required this.onSelected,
+  //   super.key,
+  // });
+
+  // final int currentTab;
+  // final void Function() onSelected;
+
   int currentTab = 0;
 
-  List<String> widgets = [
-    MainPage.routeName,
-    Selections.routeName,
-    RecordPage.routeName,
-    Audiorecords.routeName,
-    Profile.routeName,
-  ];
+  void _onChanged(int index, String routName) {
+    setState(() {
+      currentTab = index;
+    });
+    Navigator.pushNamed(context, routName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,17 +86,18 @@ class _BottomBarState extends State<BottomBar> {
               ),
             ),
             selected: currentTab == 0,
-            onSelect: () {
-                currentTab = 0 ;
-                Navigator.pushNamed(context, widgets.elementAt(currentTab));
-            },
+            onSelect: //() => onSelected,
+            () =>_onChanged(
+              0,
+              MainPage.routeName,
+            ),
           ),
           //const SizedBox(width: 5.0),
           const Spacer(flex: 4),
           _BottomBarItem(
             icon: SvgPicture.asset(
               AppIcons.category,
-              color: currentTab  == 1 ? purple : blackBottomBar,
+              color: currentTab == 1 ? purple : blackBottomBar,
             ),
             title: Text(
               S.of(context).selections,
@@ -100,10 +109,10 @@ class _BottomBarState extends State<BottomBar> {
               ),
             ),
             selected: currentTab == 1,
-            onSelect: () {
-                currentTab = 1;
-                Navigator.pushNamed(context, widgets.elementAt(currentTab));
-            },
+            onSelect: () =>_onChanged(
+              1,
+              Selections.routeName,
+            ),
           ),
           // SizedBox(width: 5.0),
           const Spacer(flex: 5),
@@ -122,10 +131,10 @@ class _BottomBarState extends State<BottomBar> {
               ),
             ),
             selected: currentTab == 2,
-            onSelect: () {
-              currentTab = 2;
-              Navigator.pushNamed(context, widgets.elementAt(currentTab));
-            },
+            onSelect: () =>_onChanged(
+              2,
+              RecordPage.routeName,
+            ),
           ),
           //const SizedBox(width: 5.0),
           const Spacer(flex: 3),
@@ -144,10 +153,10 @@ class _BottomBarState extends State<BottomBar> {
               ),
             ),
             selected: currentTab == 3,
-            onSelect: () {
-              currentTab = 3;
-              Navigator.pushNamed(context, widgets.elementAt(currentTab));
-            },
+            onSelect: () =>_onChanged(
+              3,
+              Audiorecords.routeName,
+            ),
           ),
           //const SizedBox(width: 5.0),
           const Spacer(flex: 2),
@@ -166,10 +175,10 @@ class _BottomBarState extends State<BottomBar> {
               ),
             ),
             selected: currentTab == 4,
-            onSelect: () {
-              currentTab = 4;
-              Navigator.pushNamed(context, widgets.elementAt(currentTab));
-            },
+            onSelect: () =>_onChanged(
+              4,
+              Profile.routeName,
+            ),
           ),
           const Spacer(flex: 2),
           //const SizedBox(width: 5.0),

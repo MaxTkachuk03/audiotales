@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 const gradient = LinearGradient(
-  begin: Alignment.topLeft,
-  end: Alignment.bottomRight,
-  colors: [
-    Color.fromRGBO(128, 119, 228, 1.0),
-    Color.fromRGBO(241, 180, 136, 1.0),
-  ]);
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      Color.fromRGBO(128, 119, 228, 1.0),
+      Color.fromRGBO(241, 180, 136, 1.0),
+    ]);
 
 const white = Color.fromRGBO(246, 246, 246, 1.0);
 
@@ -26,7 +26,7 @@ const shadow = Color.fromRGBO(0, 0, 0, 0.11);
 
 const shadowForDrawer = Color.fromRGBO(0, 0, 0, 0.25);
 
-const shadowCircular =  Color.fromRGBO(128, 119, 231, 0.2);
+const shadowCircular = Color.fromRGBO(128, 119, 231, 0.2);
 
 const shadowSplashScreen = Color.fromRGBO(0, 0, 0, 0.08);
 
@@ -53,3 +53,5 @@ const red = Color.fromRGBO(226, 119, 119, 1);
 const blackCursor = Color.fromRGBO(64, 64, 64, 1);
 
 const premiumShadow = Color.fromRGBO(0, 0, 0, 0.1);
+
+const editcolor = Color.fromRGBO(0, 0, 0, 0.5);

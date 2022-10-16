@@ -44,73 +44,72 @@ class _RegistrationPageEndState extends State<RegistrationPageEnd> {
         onWillPop: () async {
           return false;
         },
-        child: CircularWrapper(
-          color: purple,
-          height: h / 2.4,
-          shadow: const BoxShadow(
-            color: shadowCircular,
-            offset: Offset(0.0, 4.0),
-            blurRadius: 35.0,
-          ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: h / 2.4,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AutoSizeText(
-                      S.of(context).superYou,
-                      style: const TextStyle(
-                        color: white,
-                        fontWeight: AppFonts.bold,
-                        fontSize: 48.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 78.0),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50.0),
+        child: Stack(
+          children: [
+            CircularWrapper(
+              height: h / 2.4,
+            ),
+            Column(
+              children: [
+                SizedBox(
+                  height: h / 2.4,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        decoration: const BoxDecoration(
+                      AutoSizeText(
+                        S.of(context).superYou,
+                        style: const TextStyle(
                           color: white,
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: shadow,
-                              offset: Offset(0.0, 4.0),
-                              blurRadius: 7.0,
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 21.0, vertical: 25.0),
-                          child: AutoSizeText(
-                            S.of(context).weGlad,
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
-                            style: const TextStyle(
-                              color: black,
-                              fontWeight: AppFonts.regular,
-                              fontSize: 24.0,
-                            ),
-                          ),
+                          fontWeight: AppFonts.bold,
+                          fontSize: 48.0,
                         ),
                       ),
-                      const SizedBox(height: 59.0),
-                      SvgPicture.asset(AppIcons.heart),
                     ],
                   ),
                 ),
-              ),
-            ],
-          ),
+                const SizedBox(height: 78.0),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15.0)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: shadow,
+                                offset: Offset(0.0, 4.0),
+                                blurRadius: 7.0,
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 21.0, vertical: 25.0),
+                            child: AutoSizeText(
+                              S.of(context).weGlad,
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              style: const TextStyle(
+                                color: black,
+                                fontWeight: AppFonts.regular,
+                                fontSize: 24.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 59.0),
+                        SvgPicture.asset(AppIcons.heart),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

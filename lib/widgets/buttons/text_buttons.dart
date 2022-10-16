@@ -2,9 +2,11 @@ import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/pages/audiotales_pages/edit_page.dart';
 import 'package:audiotales/pages/audiotales_pages/premium_page.dart';
 import 'package:audiotales/pages/audiotales_pages/profile_page.dart';
+import 'package:audiotales/pages/audiotales_pages/record_page.dart';
 import 'package:audiotales/pages/main_page.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
+import 'package:audiotales/widgets/buttons/floating_actions_buttons.dart';
 import 'package:flutter/material.dart';
 
 class TextButtonWapper extends StatelessWidget {
@@ -139,6 +141,56 @@ class TextButtonDeleteAccount extends StatelessWidget {
   }
 }
 
+Future simpleDialogWithOption(BuildContext context) async {
+  return await showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            S.of(context).youSure,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: black,
+              fontWeight: AppFonts.regular,
+              fontFamily: AppFonts.fontFamily,
+              fontSize: 20.0,
+            ),
+          ),
+          content: Text(
+            S.of(context).allAudiowillVanish,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: black,
+              fontWeight: AppFonts.regular,
+              fontFamily: AppFonts.fontFamily,
+              fontSize: 14.0,
+            ),
+          ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(30.0),
+            ),
+          ),
+          actionsAlignment: MainAxisAlignment.center,
+          alignment: Alignment.center,
+          actions: [
+            FlActButDeleteWrapper(
+              onTap: () {},
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            FlActButNOWrapper(
+              onTap: () {
+                Navigator.popAndPushNamed(context, Profile.routeName);
+              },
+            ),
+          ],
+        );
+      });
+}
+
 class TextButtonEdit extends StatelessWidget {
   const TextButtonEdit({super.key});
 
@@ -183,42 +235,24 @@ class TextButtonSave extends StatelessWidget {
   }
 }
 
-Future simpleDialogWithOption(BuildContext context) async {
-  final double h = MediaQuery.of(context).size.height;
-    final double w = MediaQuery.of(context).size.width;
-  return await showDialog(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context) {
-        return 
-        // Container(
-        //   width: w/1.3,
-        //   height: h/3.6,
-        //   decoration: const BoxDecoration(
-        //     color: white,
-        //     borderRadius: BorderRadius.all(
-        //       Radius.circular(30.0),
-        //     ),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: shadowForDrawer,
-        //     blurRadius: 11.0,
-        //     offset: Offset(0, 4.0),
-        //   )
-        // ]
-        //   ),
-        //   child: 
-          AlertDialog(
-            title: Text(
-              S.of(context).youSure,
-              style: const TextStyle(
-                color: black,
-                fontWeight: AppFonts.regular,
-                fontFamily: AppFonts.fontFamily,
-                fontSize: 20.0,
-              ),
-            ),
-          //),
-        );
-      });
+class TextButtonCancel extends StatelessWidget {
+  const TextButtonCancel({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        Navigator.pushNamed(context, RecordPage.routeName);
+      },
+      child: Text(
+        S.of(context).back,
+        style: const TextStyle(
+          color: black,
+          fontWeight: AppFonts.regular,
+          fontFamily: AppFonts.fontFamily,
+          fontSize: 16.0,
+        ),
+      ),
+    );
+  }
 }

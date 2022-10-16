@@ -34,11 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "andHere": MessageLookupByLibrary.simpleMessage("И тут"),
         "audiorecord": MessageLookupByLibrary.simpleMessage("Аудиозаписи"),
         "audiotales": MessageLookupByLibrary.simpleMessage("Аудиосказки"),
+        "back": MessageLookupByLibrary.simpleMessage("Отменить"),
         "buttonText": MessageLookupByLibrary.simpleMessage("Продолжить"),
         "changePremium":
             MessageLookupByLibrary.simpleMessage("Выбери подписку"),
         "code": MessageLookupByLibrary.simpleMessage(
             "Введи код из смс, чтобы мы тебя запомнили"),
+        "delete": MessageLookupByLibrary.simpleMessage("Удалить"),
         "deleteAccount":
             MessageLookupByLibrary.simpleMessage("Удалить аккаунт"),
         "deleted": MessageLookupByLibrary.simpleMessage("Недавно удаленные"),
@@ -55,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Неограниченая память"),
         "main": MessageLookupByLibrary.simpleMessage("Главная"),
         "menu": MessageLookupByLibrary.simpleMessage("Меню"),
+        "no": MessageLookupByLibrary.simpleMessage("Нет"),
         "openAll": MessageLookupByLibrary.simpleMessage("Открыть все"),
         "premium": MessageLookupByLibrary.simpleMessage("Подписка"),
         "premiumMounce":

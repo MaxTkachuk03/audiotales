@@ -1,15 +1,15 @@
 import 'package:audiotales/pages/audiotales_pages/audiorecords_page.dart';
 import 'package:audiotales/pages/audiotales_pages/edit_page.dart';
 import 'package:audiotales/pages/audiotales_pages/premium_page.dart';
-import 'package:audiotales/pages/audiotales_pages/record_page.dart';
-import 'package:audiotales/pages/logined_page_start.dart';
 import 'package:audiotales/pages/audiotales_pages/profile_page.dart';
+import 'package:audiotales/pages/audiotales_pages/record_page.dart';
 import 'package:audiotales/pages/audiotales_pages/selections_page.dart';
 import 'package:audiotales/pages/main_page.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_code.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_end.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_numbers.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_start.dart';
+import 'package:audiotales/pages/screens/logined_page_start.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {

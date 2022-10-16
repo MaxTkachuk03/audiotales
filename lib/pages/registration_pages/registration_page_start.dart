@@ -21,84 +21,82 @@ class _RegistrationPageStartState extends State<RegistrationPageStart> {
   Widget build(BuildContext context) {
     final double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: CircularWrapper(
-        color: purple,
-        height: h / 2.4,
-        shadow: const BoxShadow(
-          color: shadowCircular,
-          offset: Offset(0.0, 4.0),
-          blurRadius: 35.0,
-        ),
-        child: Column(
-          children: [
-            SizedBox(
-              height: h / 2.4,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  AutoSizeText(
-                    S.of(context).splashScreenText,
-                    maxFontSize: 48.0,
-                    style: const TextStyle(
-                      color: white,
-                      fontWeight: AppFonts.bold,
-                      fontSize: 48.0,
-                    ),
-                  ),
-                  AutoSizeText(
-                    S.of(context).underMemoryBox,
-                    style: const TextStyle(
-                      color: white,
-                      fontWeight: AppFonts.regular,
-                      fontSize: 14.0,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 52.0),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+      body: Stack(
+        children: [
+          CircularWrapper(
+            height: h / 2.4,
+          ),
+          Column(
+            children: [
+              SizedBox(
+                height: h / 2.3,
                 child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     AutoSizeText(
-                      S.of(context).hello,
-                      textAlign: TextAlign.center,
+                      S.of(context).splashScreenText,
+                      maxFontSize: 48.0,
                       style: const TextStyle(
-                        color: black,
-                        fontWeight: AppFonts.regular,
-                        fontSize: 24.0,
+                        color: white,
+                        fontWeight: AppFonts.bold,
+                        fontSize: 48.0,
                       ),
                     ),
-                    const SizedBox(height: 24.0),
                     AutoSizeText(
-                      S.of(context).presentText,
-                      textAlign: TextAlign.center,
-                      maxLines: 4,
+                      S.of(context).underMemoryBox,
                       style: const TextStyle(
-                        color: black,
+                        color: white,
                         fontWeight: AppFonts.regular,
-                        fontSize: 16.0,
+                        fontSize: 14.0,
                       ),
-                    ),
-                    const SizedBox(height: 48.0),
-                    FloatingABWrapper(
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, RegistrationPageNumbers.routeName);
-                      },
-                      text: S.of(context).buttonText,
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
-        ),
+              const SizedBox(height: 52.0),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AutoSizeText(
+                        S.of(context).hello,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: black,
+                          fontWeight: AppFonts.regular,
+                          fontSize: 24.0,
+                        ),
+                      ),
+                      const SizedBox(height: 24.0),
+                      AutoSizeText(
+                        S.of(context).presentText,
+                        textAlign: TextAlign.center,
+                        maxLines: 4,
+                        style: const TextStyle(
+                          color: black,
+                          fontWeight: AppFonts.regular,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                      const SizedBox(height: 48.0),
+                      FloatingABWrapper(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, RegistrationPageNumbers.routeName);
+                        },
+                        text: S.of(context).buttonText,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

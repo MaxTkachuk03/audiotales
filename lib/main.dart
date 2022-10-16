@@ -1,9 +1,8 @@
-import 'package:audiotales/pages/logined_page_start.dart';
-import 'package:audiotales/pages/splashscreen.dart';
+import 'package:audiotales/pages/screens/logined_page_start.dart';
+import 'package:audiotales/pages/screens/splashscreen.dart';
 import 'package:audiotales/resouses/themes.dart';
 import 'package:audiotales/routes/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
 
