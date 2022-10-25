@@ -1,40 +1,50 @@
-import 'package:audiotales/generated/l10n.dart';
-import 'package:audiotales/pages/audiotales_pages/audiorecords_page.dart';
-import 'package:audiotales/pages/audiotales_pages/profile_page.dart';
-import 'package:audiotales/pages/audiotales_pages/record_page.dart';
-import 'package:audiotales/pages/audiotales_pages/selections_page.dart';
 import 'package:audiotales/pages/screens/main_page_view.dart';
-import 'package:audiotales/resouses/colors.dart';
-import 'package:audiotales/resouses/fonts.dart';
-import 'package:audiotales/resouses/icons.dart';
-import 'package:audiotales/widgets/buttons/text_buttons.dart';
+import 'package:audiotales/routes/app_routes.dart';
 import 'package:audiotales/widgets/navigation/custom_bottomnavigator.dart';
 import 'package:audiotales/widgets/navigation/drawer.dart';
-import 'package:audiotales/widgets/paint/circular_wrapper.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class MainPage extends StatefulWidget {
-   const MainPage({Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
-  static const routeName = '/audiotales/main';
+  static const routeName = '/main';
 
   @override
   State<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  @override
-  void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-    super.initState();
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
+  void _onSelectTab(String route) {
+    if (_navigatorKey.currentState != null) {
+      _navigatorKey.currentState!.pushNamedAndRemoveUntil(
+        route,
+        (route) => false,
+      );
+    }
   }
 
+    void _onSelectMenu(String route) {
+    if (_navigatorKey.currentState != null) {
+      _navigatorKey.currentState!.pushNamedAndRemoveUntil(
+        route,
+        (_) => false,
+      );
+    }
+  }
 
-  // int currentTab = 1;
+  // void _onSelectTab1(String route) {
+  //   if (_navigatorKey.currentState != null) {
+  //     _navigatorKey.currentState?.pushNamedAndRemoveUntil(
+  //       route,
+  //       (route) => false,
+  //       //Scaffold.of(context).closeDrawer(),
+  //     );
+  //   }
+  // }
 
   // List<String> widgets = [
   //   MainPage.routeName,
@@ -53,21 +63,22 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    //_key.currentState?.closeDrawer();
     return Scaffold(
+      key: _key,
       extendBody: true,
-      //extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: purple,
+      //drawerEnableOpenDragGesture: false,
+      drawer: NavigationDrawer(
+        onTap: _onSelectMenu,
       ),
-      drawer: NavigationDrawer(),
-      bottomNavigationBar: const BottomBar(),
-      // const BottomBar(
-      //       currentTab: currentTab,
-      //       onSelected: () => _onChanged(currentTab+1),
-      //     ),
-      body: const MainView(),
+      bottomNavigationBar: BottomBar(
+        onSelected: _onSelectTab,
+      ),
+      body: Navigator(
+        key: _navigatorKey,
+        initialRoute: MainView.routeName,
+        onGenerateRoute: AppRouter.generateRoute,
+      ),
     );
   }
 }
-

@@ -1,5 +1,4 @@
 import 'package:audiotales/resouses/colors.dart';
-import 'package:audiotales/widgets/navigation/drawer.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +18,7 @@ class _SearchState extends State<Search> {
         elevation: 0,
         backgroundColor: blueCircular,
       ),
-      drawer: NavigationDrawer(),
+      //drawer: NavigationDrawer(),
       //bottomNavigationBar: const BottomBar(),
       body: Stack(
         children: [
@@ -32,7 +31,9 @@ class _SearchState extends State<Search> {
               blurRadius: 25.0,
             ),
           ),
-          Column(children: []),
+          Column(
+            children: [],
+          ),
         ],
       ),
     );

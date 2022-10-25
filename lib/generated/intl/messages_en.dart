@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "allFilesSavedonCloud":
             MessageLookupByLibrary.simpleMessage("Все файлы хранятся в облаке"),
         "allaudio": MessageLookupByLibrary.simpleMessage("Все аудиофайлы"),
+        "allinoneplace":
+            MessageLookupByLibrary.simpleMessage("Все в одном месте"),
         "andHere": MessageLookupByLibrary.simpleMessage("И тут"),
         "audiorecord": MessageLookupByLibrary.simpleMessage("Аудиозаписи"),
         "audiotales": MessageLookupByLibrary.simpleMessage("Аудиосказки"),

@@ -6,7 +6,7 @@ import 'package:audiotales/pages/registration_pages/registration_page_end.dart';
 import 'package:audiotales/resouses/borders.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
-import 'package:audiotales/widgets/buttons/floating_actions_buttons.dart';
+import 'package:audiotales/widgets/buttons/floating_actions_button.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 class RegistrationPageCode extends StatefulWidget {
   const RegistrationPageCode({Key? key}) : super(key: key);
 
-  static const routeName = '/audiotales/code';
+  static const routeName = '/registration_pages/code';
 
   @override
   State<RegistrationPageCode> createState() => _RegistrationPageCodeState();

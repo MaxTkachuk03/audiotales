@@ -10,6 +10,8 @@ import 'package:audiotales/pages/registration_pages/registration_page_end.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_numbers.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_start.dart';
 import 'package:audiotales/pages/screens/logined_page_start.dart';
+import 'package:audiotales/pages/screens/main_page_view.dart';
+import 'package:audiotales/pages/screens/splashscreen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -35,6 +37,9 @@ class AppRouter {
       case LoginedPageStart.routeName:
         builder = (_) => const LoginedPageStart();
         break;
+      case MainView.routeName:
+        builder = (_) => const MainView();
+        break;
       case MainPage.routeName:
         builder = (_) => const MainPage();
         break;
@@ -53,10 +58,15 @@ class AppRouter {
       case EditPage.routeName:
         builder = (_) => const EditPage();
         break;
+      case SplashScreen.routeName:
+        builder = (_) => const SplashScreen();
+        break;
       case PremiumPage.routeName:
         builder = (_) => const PremiumPage();
         break;
-
+      // case Alert.routeName:
+      //   builder = (_) => const Alert();
+      //   break;
       default:
         throw Exception('Invalid route: ${settings.name}');
     }

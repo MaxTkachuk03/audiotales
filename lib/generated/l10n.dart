@@ -569,6 +569,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Все в одном месте`
+  String get allinoneplace {
+    return Intl.message(
+      'Все в одном месте',
+      name: 'allinoneplace',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

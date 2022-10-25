@@ -6,8 +6,8 @@ import 'package:audiotales/pages/registration_pages/registration_page_code.dart'
 import 'package:audiotales/resouses/borders.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
-import 'package:audiotales/widgets/buttons/floating_actions_buttons.dart';
-import 'package:audiotales/widgets/buttons/text_buttons.dart';
+import 'package:audiotales/widgets/buttons/floating_actions_button.dart';
+import 'package:audiotales/widgets/buttons/text_button_after.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -114,7 +114,7 @@ class _RegistrationPageStartState extends State<RegistrationPageNumbers> {
                       ),
                       //const Spacer(),
                       const SizedBox(height: 24.0),
-                      const TextButtonWapper(),
+                      const TextButtonAfter(),
                       //const Spacer(),
                       const SizedBox(height: 29.0),
                       Container(

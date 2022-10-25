@@ -8,10 +8,32 @@ import 'package:audiotales/resouses/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class NavigationDrawer extends StatelessWidget {
-  NavigationDrawer({super.key});
+class NavigationDrawer extends StatefulWidget {
+  const NavigationDrawer({
+    required this.onTap,
+    super.key,
+  });
 
-  int _currentTab = 0;
+  final void Function(String) onTap;
+
+  @override
+  State<NavigationDrawer> createState() => _NavigationDrawerState();
+}
+
+class _NavigationDrawerState extends State<NavigationDrawer> {
+
+  // void _navigateToPage(BuildContext context, String route) {
+  //   Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil(
+  //     route,
+  //     (_) => false,
+  //   );
+  // }
+
+  void _onChanged(int index, String routName) {
+      widget.onTap(routName);
+      Navigator.pop(context);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,60 +80,49 @@ class NavigationDrawer extends StatelessWidget {
               _DrawerItem(
                 icon: SvgPicture.asset(AppIcons.home),
                 title: S.of(context).main,
-                selected: _currentTab == 0,
                 onSelect: () {
-                  _currentTab = 0;
-                  Navigator.pushNamed(context, MainPage.routeName);
+                  _onChanged(0,MainPage.routeName);
                 },
               ),
               _DrawerItem(
                 icon: SvgPicture.asset(AppIcons.profile),
                 title: S.of(context).profile,
-                selected: _currentTab == 1,
                 onSelect: () {
-                  _currentTab = 1;
-                  Navigator.pushNamed(context, Profile.routeName);
+                  _onChanged(1,Profile.routeName);
                 },
               ),
               _DrawerItem(
                 icon: SvgPicture.asset(AppIcons.category),
                 title: S.of(context).selections,
-                selected: _currentTab == 0,
                 onSelect: () {},
               ),
               _DrawerItem(
                 icon: SvgPicture.asset(AppIcons.paper),
                 title: S.of(context).allaudio,
-                selected: _currentTab == 0,
                 onSelect: () {},
               ),
               _DrawerItem(
                 icon: SvgPicture.asset(AppIcons.search),
                 title: S.of(context).search,
-                selected: _currentTab == 0,
                 onSelect: () {},
               ),
               _DrawerItem(
                 icon: SvgPicture.asset(AppIcons.delete),
                 title: S.of(context).deleted,
-                selected: _currentTab == 0,
                 onSelect: () {},
               ),
               const Spacer(),
               _DrawerItem(
                 icon: SvgPicture.asset(AppIcons.wallet),
                 title: S.of(context).premium,
-                selected: _currentTab == 6,
                 onSelect: () {
-                   _currentTab = 6;
-                  Navigator.pushNamed(context, PremiumPage.routeName);
+                  _onChanged(6, PremiumPage.routeName);
                 },
               ),
               const Spacer(),
               _DrawerItem(
                 icon: SvgPicture.asset(AppIcons.edit),
                 title: S.of(context).support,
-                selected: _currentTab == 0,
                 onSelect: () {},
               ),
               const Spacer(),
@@ -127,14 +138,12 @@ class _DrawerItem extends StatelessWidget {
   const _DrawerItem({
     required this.icon,
     required this.title,
-    required this.selected,
     required this.onSelect,
     Key? key,
   }) : super(key: key);
 
   final Widget icon;
   final String title;
-  final bool selected;
   final Function() onSelect;
 
   @override
@@ -150,7 +159,6 @@ class _DrawerItem extends StatelessWidget {
             width: 30.0,
             child: icon,
           ),
-          autofocus: selected,
           label: Text(
             title,
             style: const TextStyle(

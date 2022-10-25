@@ -1,8 +1,11 @@
+import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/resouses/colors.dart';
-import 'package:audiotales/widgets/navigation/custom_bottomnavigator.dart';
-import 'package:audiotales/widgets/navigation/drawer.dart';
+import 'package:audiotales/resouses/fonts.dart';
+import 'package:audiotales/resouses/icons.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Selections extends StatefulWidget {
   const Selections({super.key});
@@ -19,11 +22,24 @@ class _SelectionsState extends State<Selections> {
     final double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: SvgPicture.asset(AppIcons.plus),
+          onPressed: () {},
+        ),
         elevation: 0,
         backgroundColor: greenCircular,
+        centerTitle: true,
+        title: AutoSizeText(
+          S.of(context).selections,
+          maxLines: 1,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontFamily: AppFonts.fontFamily,
+            fontWeight: AppFonts.bold,
+            fontSize: 36.0,
+          ),
+        ),
       ),
-      drawer: NavigationDrawer(),
-      //bottomNavigationBar: const BottomBar(),
       body: Stack(
         children: [
           CircularWrapper(
@@ -35,7 +51,26 @@ class _SelectionsState extends State<Selections> {
               blurRadius: 25.0,
             ),
           ),
-          Column(children: []),
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    S.of(context).allinoneplace,
+                    maxLines: 1,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: white,
+                      fontFamily: AppFonts.fontFamily,
+                      fontWeight: AppFonts.regular,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ],
       ),
     );

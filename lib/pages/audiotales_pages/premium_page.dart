@@ -2,11 +2,8 @@ import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
 import 'package:audiotales/resouses/icons.dart';
-import 'package:audiotales/widgets/buttons/floating_actions_buttons.dart';
-import 'package:audiotales/widgets/navigation/custom_bottomnavigator.dart';
-import 'package:audiotales/widgets/navigation/drawer.dart';
+import 'package:audiotales/widgets/buttons/floating_actions_button.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -37,6 +34,10 @@ class _PremiumPageState extends State<PremiumPage> {
     final double w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Scaffold.of(context).openDrawer(),
+          icon: SvgPicture.asset(AppIcons.drawer),
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: purple,
@@ -50,50 +51,52 @@ class _PremiumPageState extends State<PremiumPage> {
           ),
         ),
       ),
-      drawer: NavigationDrawer(),
-      bottomNavigationBar: const BottomBar(),
+      //drawer: NavigationDrawer(),
+      // bottomNavigationBar: const BottomBar(),
       body: Stack(
         children: [
           CircularWrapper(
             height: h / 2.4,
           ),
-          SingleChildScrollView(
-            child: SizedBox(
-              height: h,
-              child: Column(
-                children: [
-                  Text(
-                    S.of(context).extendsOpportunities,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
+          Column(
+            children: [
+              Text(
+                S.of(context).extendsOpportunities,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: white,
+                  fontWeight: AppFonts.regular,
+                  fontFamily: AppFonts.fontFamily,
+                  fontSize: 16.0,
+                ),
+              ),
+              const Spacer(),
+              // const SizedBox(
+              //   height: 46.0,
+              // ),
+              Expanded(
+                flex: 20,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 5.0,
+                  ),
+                  child: Container(
+                    width: w / 1.03,
+                    decoration: const BoxDecoration(
                       color: white,
-                      fontWeight: AppFonts.regular,
-                      fontFamily: AppFonts.fontFamily,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 46.0,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 5.0,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(25.0),
                       ),
-                      child: Container(
-                        width: w / 1.03,
-                        decoration: const BoxDecoration(
-                          color: white,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(25.0),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                                color: whiteBottomBar,
-                                offset: Offset(0.0, 4.0),
-                                blurRadius: 24.0)
-                          ],
-                        ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: whiteBottomBar,
+                            offset: Offset(0.0, 4.0),
+                            blurRadius: 24.0)
+                      ],
+                    ),
+                    child: SingleChildScrollView(
+                      child: SizedBox(
+                        height: h,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           //crossAxisAlignment: CrossAxisAlignment.start,
@@ -329,12 +332,13 @@ class _PremiumPageState extends State<PremiumPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 9.0,
-                  ),
-                ],
+                ),
               ),
-            ),
+              const SizedBox(
+                height: 9.0,
+              ),
+              const Spacer(flex: 3,),
+            ],
           ),
         ],
       ),

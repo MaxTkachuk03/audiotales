@@ -44,6 +44,8 @@ dependencies:
   bottom_navy_bar: ^6.0.0
   sliding_up_panel: ^2.0.0+1
   image_picker: ^0.8.6
+  flutter_sound: ^9.2.13
+  permission_handler: ^10.1.0
 
 dev_dependencies:
   flutter_lints: ^2.0.1
@@ -77,6 +79,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/fonts/
+    - assets/audio/
 
   fonts:
     - family: TTNorms

@@ -13,7 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class RegistrationPageEnd extends StatefulWidget {
   const RegistrationPageEnd({Key? key}) : super(key: key);
 
-  static const routeName = '/audiotales/end';
+  static const routeName = '/registration_pages/end';
 
   @override
   State<RegistrationPageEnd> createState() => _RegistrationPageEndState();

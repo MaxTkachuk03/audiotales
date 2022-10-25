@@ -22,9 +22,16 @@ class _SplashScreen extends State<SplashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, RegistrationPageStart.routeName);
+     _navigateToPage(RegistrationPageStart.routeName);
     });
     super.initState();
+  }
+
+  void _navigateToPage(String route) {
+    Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil(
+      route,
+      (_) => false,
+    );
   }
 
   @override

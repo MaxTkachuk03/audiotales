@@ -22,4 +22,9 @@ class AppIcons{
   static const String premium = '$_path/circul.svg';
   static const String nonepremium = '$_path/circular_empty.svg';
   static const String recording = '$_path/recording.svg';
+  static const String play = '$_path/play.svg';
+  static const String drawer = '$_path/drawer.svg';
+  //static const String dots = '$_path/dots.svg';
+  static const String plus = '$_path/plus.svg';
+  static const String redcircle = '$_path/redcircle.svg';
 }

@@ -7,9 +7,7 @@ import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
 import 'package:audiotales/resouses/icons.dart';
 import 'package:audiotales/resouses/images.dart';
-import 'package:audiotales/widgets/buttons/text_buttons.dart';
-import 'package:audiotales/widgets/navigation/custom_bottomnavigator.dart';
-import 'package:audiotales/widgets/navigation/drawer.dart';
+import 'package:audiotales/widgets/buttons/text_button_save.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,6 +41,7 @@ class _EditPageState extends State<EditPage> {
 
     if (image == null) return;
 
+    // ignore: unnecessary_null_comparison
     if (image != null) {
       setState(() {
         imageFile = File(image.path);
@@ -56,7 +55,7 @@ class _EditPageState extends State<EditPage> {
     final double w = MediaQuery.of(context).size.width;
     return Scaffold(
       //resizeToAvoidBottomInset: false,
-      bottomNavigationBar: const BottomBar(),
+      // bottomNavigationBar: const BottomBar(),
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
