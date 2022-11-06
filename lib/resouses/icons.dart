@@ -27,4 +27,5 @@ class AppIcons{
   //static const String dots = '$_path/dots.svg';
   static const String plus = '$_path/plus.svg';
   static const String redcircle = '$_path/redcircle.svg';
+  static const String stopinbottombar = '$_path/stopinbottombar.svg';
 }

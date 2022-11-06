@@ -1,8 +1,10 @@
+import 'package:audiotales/blocs/record_bloc/bloc/record_bloc.dart';
 import 'package:audiotales/pages/screens/logined_page_start.dart';
 import 'package:audiotales/pages/screens/splashscreen.dart';
 import 'package:audiotales/resouses/themes.dart';
 import 'package:audiotales/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
 
@@ -30,23 +32,34 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => RecordBloc(),
+        ),
       ],
-      supportedLocales: S.delegate.supportedLocales,
-      debugShowCheckedModeBanner: false,
-      theme: AppThemes.light(),
-     // home: const SplashScreen(), 
-      initialRoute: SplashScreen.routeName,
-          onGenerateRoute: AppRouter.generateRoute,
-          routes: {
-            SplashScreen.routeName: (_) => const SplashScreen(),
-          },
-    //  const LoginedPageStart(),
+      child: BlocBuilder<RecordBloc, RecordingState>(
+        builder: (context, state) {
+          return MaterialApp(
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              debugShowCheckedModeBanner: false,
+              theme: AppThemes.light(),
+             // home: const SplashScreen(), 
+              initialRoute: SplashScreen.routeName,
+                  onGenerateRoute: AppRouter.generateRoute,
+                  routes: {
+                    SplashScreen.routeName: (_) => const SplashScreen(),
+                  },
+            //  const LoginedPageStart(),
+            );
+        }
+      ),
     );
   }
 }

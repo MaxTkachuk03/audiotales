@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 class Search extends StatefulWidget {
   const Search({super.key});
 
+  static const routeName = '/audiotales/search';
+
   @override
   State<Search> createState() => _SearchState();
 }

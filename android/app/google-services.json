@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "479902420420",
+    "project_id": "audiotales-flutter",
+    "storage_bucket": "audiotales-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479902420420:android:221226bc388817d276e891",
+        "android_client_info": {
+          "package_name": "com.example.audiotales"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479902420420-7vk3thgdfjrjnvg0j86rrakrcglad52h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.audiotales",
+            "certificate_hash": "5e177e157590e5370bbf63cae597f8dd22026716"
+          }
+        },
+        {
+          "client_id": "479902420420-9dthbsemk72n1tetqlu969r3sv4hddca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCagIq1dQubCdX4rDjxLBd8s0jsqCvzT5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479902420420-9dthbsemk72n1tetqlu969r3sv4hddca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

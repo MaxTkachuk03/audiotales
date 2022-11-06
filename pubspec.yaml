@@ -44,8 +44,13 @@ dependencies:
   bottom_navy_bar: ^6.0.0
   sliding_up_panel: ^2.0.0+1
   image_picker: ^0.8.6
-  flutter_sound: ^9.2.13
   permission_handler: ^10.1.0
+  flutter_bloc: ^8.1.1
+  #flutter_sound: ^9.2.13
+  record: ^4.4.3
+  firebase_auth: ^4.1.1
+  firebase_storage: ^11.0.4
+  firebase_core: ^2.1.1
 
 dev_dependencies:
   flutter_lints: ^2.0.1

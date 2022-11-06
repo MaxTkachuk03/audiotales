@@ -1,239 +1,297 @@
+import 'dart:async';
+import 'dart:io';
+
+import 'package:audiotales/blocs/record_bloc/bloc/record_bloc.dart';
 import 'package:audiotales/pages/audiotales_pages/audiorecords_page.dart';
 import 'package:audiotales/pages/audiotales_pages/profile_page.dart';
 import 'package:audiotales/pages/audiotales_pages/record_page.dart';
+import 'package:audiotales/pages/audiotales_pages/recrd_example.dart';
 import 'package:audiotales/pages/screens/main_page_view.dart';
 import 'package:audiotales/resouses/fonts.dart';
 import 'package:audiotales/resouses/icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sound/public/flutter_sound_recorder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:record/record.dart';
 
 import '../../generated/l10n.dart';
 import '../../pages/audiotales_pages/selections_page.dart';
 import '../../resouses/colors.dart';
 
 class BottomBar extends StatefulWidget {
-  const BottomBar({
-    //required this.currentTab,
+  BottomBar({
+    required this.currentTab,
     required this.onSelected,
     super.key,
   });
 
-  // int currentTab;
-  final void Function(String) onSelected;
+  int currentTab;
+  final void Function(int, String) onSelected;
 
   @override
   State<BottomBar> createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
-  final recorder = FlutterSoundRecorder();
-
-  @override
-  void dispose() {
-    recorder.closeRecorder();
-    super.dispose();
-  }
-
-  Future record() async {
-    await recorder.startRecorder(toFile: 'audio');
-  }
-
-  Future stop() async {
-    await recorder.stopRecorder();
-  }
-
-  // const _BottomBarState({
-  //   required this.currentTab,
-  //   required this.onSelected,
-  //   super.key,
-  // });
-
-  // final int currentTab;
-  // final void Function() onSelected;
-
-  int currentTab = 0;
-
   void _onChanged(int index, String routName) {
     setState(() {
-      currentTab = index;
+      widget.currentTab = index;
     });
-    widget.onSelected(routName);
+    widget.onSelected(index, routName);
   }
+
+  Future<void> stop(
+    Record audioRecorder,
+    int recordDuration,
+    Timer? timer,
+  ) async {
+    // context.read<RecordBloc>().add(
+    //       StartandStopRecordEvent(
+    //         audioRecorder: audioRecorder,
+    //         recordDuration: recordDuration,
+    //         timer: timer,
+    //         whatState: () => stop(audioRecorder, recordDuration, timer),
+    //       ),
+    //     );
+    timer?.cancel();
+    recordDuration = 0;
+
+    final path = await audioRecorder.stop();
+    final File audioFile;
+
+    if (path != null) {
+      audioFile = File(path);
+      //widget.onStop(path);
+    }
+  }
+
+  // @override
+  // void dispose() {
+  //   _timer?.cancel();
+  //   _audioRecorder.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Material(
-          child: Container(
-            width: double.infinity,
-            height: 69.0,
-            padding: const EdgeInsets.only(top: 5.0),
-            decoration: const BoxDecoration(
-              color: white,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20.0),
-                topLeft: Radius.circular(20.0),
+    return BlocConsumer<RecordBloc, RecordingState>(listener: (context, state) {
+      if (state.status == RecordState.record) {
+        stop(
+          state.audioRecorder,
+          state.recordDuration,
+          state.timer,
+        );
+      }
+    }, builder: (context, state) {
+      return Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Material(
+            child: Container(
+              width: double.infinity,
+              height: 69.0,
+              padding: const EdgeInsets.only(top: 5.0),
+              decoration: const BoxDecoration(
+                color: white,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20.0),
+                  topLeft: Radius.circular(20.0),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: whiteBottomBar,
+                    offset: Offset(0.0, 4.0),
+                    blurRadius: 50.0,
+                    spreadRadius: 10.0,
+                  ),
+                ],
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: whiteBottomBar,
-                  offset: Offset(0.0, 4.0),
-                  blurRadius: 50.0,
-                  spreadRadius: 10.0,
-                ),
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Spacer(flex: 3),
-                //const SizedBox(width: 5.0),
-                _BottomBarItem(
-                  icon: SvgPicture.asset(
-                    AppIcons.home,
-                    color: currentTab == 0 ? purple : blackBottomBar,
-                  ),
-                  title: Text(
-                    S.of(context).main,
-                    style: TextStyle(
-                      color: currentTab == 0 ? purple : blackBottomBar,
-                      fontWeight: AppFonts.regular,
-                      height: .5,
-                      //inherit: true,
-                      fontSize: 10.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Spacer(flex: 4),
+                  //const SizedBox(width: 5.0),
+                  _BottomBarItem(
+                    icon: SvgPicture.asset(
+                      AppIcons.home,
+                      color: widget.currentTab == 0 ? purple : blackBottomBar,
                     ),
-                  ),
-                  selected: currentTab == 0,
-                  onSelect: //() => onSelected,
-                      () => _onChanged(0, MainView.routeName),
-                ),
-                //const SizedBox(width: 5.0),
-                const Spacer(flex: 4),
-                _BottomBarItem(
-                  icon: SvgPicture.asset(
-                    AppIcons.category,
-                    color: currentTab == 1 ? purple : blackBottomBar,
-                  ),
-                  title: Text(
-                    S.of(context).selections,
-                    style: TextStyle(
-                      color: currentTab == 1 ? purple : blackBottomBar,
-                      fontWeight: AppFonts.regular,
-                      height: .5,
-                      fontSize: 10.0,
+                    title: Text(
+                      S.of(context).main,
+                      style: TextStyle(
+                        color: widget.currentTab == 0 ? purple : blackBottomBar,
+                        fontWeight: AppFonts.regular,
+                        height: .5,
+                        //inherit: true,
+                        fontSize: 10.0,
+                      ),
                     ),
+                    selected: widget.currentTab == 0,
+                    onSelect: //() => onSelected,
+                        () => _onChanged(0, MainView.routeName),
                   ),
-                  selected: currentTab == 1,
-                  onSelect: () => _onChanged(1, Selections.routeName),
-                ),
-                // SizedBox(width: 5.0),
-                const Spacer(flex: 5),
-                _BottomBarItem(
-                  icon: SvgPicture.asset(
-                    AppIcons.micro,
-                    // color: on ? purple : blackBottomBar,
+                  //const SizedBox(width: 5.0),
+                  const Spacer(flex: 6),
+                  _BottomBarItem(
+                    icon: SvgPicture.asset(
+                      AppIcons.category,
+                      color: widget.currentTab == 1 ? purple : blackBottomBar,
+                    ),
+                    title: Text(
+                      S.of(context).selections,
+                      style: TextStyle(
+                        color: widget.currentTab == 1 ? purple : blackBottomBar,
+                        fontWeight: AppFonts.regular,
+                        height: .5,
+                        fontSize: 10.0,
+                      ),
+                    ),
+                    selected: widget.currentTab == 1,
+                    onSelect: () => _onChanged(1, Selections.routeName),
                   ),
-                  title: currentTab == 2
-                      ? const Text(
-                          '',
-                          style: TextStyle(
-                            height: 1.0,
-                            fontSize: 1.0,
+                  // SizedBox(width: 5.0),
+                  const Spacer(flex: 3),
+                  _BottomBarItem(
+                    icon: widget.currentTab == 2
+                        ? const Text('')
+                        : SvgPicture.asset(
+                            AppIcons.micro,
+                            // color: on ? purple : blackBottomBar,
                           ),
-                        )
-                      : Text(
-                          S.of(context).record,
-                          style: const TextStyle(
-                            color: orange,
-                            fontWeight: AppFonts.regular,
-                            height: 1.0,
-                            fontSize: 10.0,
+                    title: widget.currentTab == 2
+                        ? const Text(
+                            '',
+                            style: TextStyle(
+                              height: 1.0,
+                              fontSize: 1.0,
+                            ),
+                          )
+                        : Text(
+                            S.of(context).record,
+                            style: const TextStyle(
+                              color: orange,
+                              fontWeight: AppFonts.regular,
+                              height: 1.0,
+                              fontSize: 10.0,
+                            ),
                           ),
-                        ),
-                  selected: currentTab == 2,
-                  onSelect: () {
-                    _onChanged(2, RecordPage.routeName);
-                    // record();
-                  },
-                ),
-                //const SizedBox(width: 5.0),
-                const Spacer(flex: 3),
-                _BottomBarItem(
-                  icon: SvgPicture.asset(
-                    AppIcons.paper,
-                    color: currentTab == 3 ? purple : blackBottomBar,
-                  ),
-                  title: Text(
-                    S.of(context).audiorecord,
-                    style: TextStyle(
-                      color: currentTab == 3 ? purple : blackBottomBar,
-                      fontWeight: AppFonts.regular,
-                      height: .5,
-                      fontSize: 10.0,
-                    ),
-                  ),
-                  selected: currentTab == 3,
-                  onSelect: () => _onChanged(3, Audiorecords.routeName),
-                ),
-                //const SizedBox(width: 5.0),
-                const Spacer(flex: 2),
-                _BottomBarItem(
-                  icon: SvgPicture.asset(
-                    AppIcons.profile,
-                    color: currentTab == 4 ? purple : blackBottomBar,
-                  ),
-                  title: Text(
-                    S.of(context).profile,
-                    style: TextStyle(
-                      color: currentTab == 4 ? purple : blackBottomBar,
-                      fontWeight: AppFonts.regular,
-                      height: .5,
-                      fontSize: 10.0,
-                    ),
-                  ),
-                  selected: currentTab == 4,
-                  onSelect: () => _onChanged(4, Profile.routeName),
-                ),
-                const Spacer(flex: 2),
-                //const SizedBox(width: 5.0),
-              ],
-            ),
-          ),
-        ),
-        currentTab == 2
-            ? Positioned(
-                left: w / 2.66,
-                bottom: h / 40,
-                child: SizedBox(
-                  height: 161,
-                  width: 80,
-                  child: IconButton(
-                    padding: const EdgeInsets.all(0),
-                    onPressed: () async {
-                      //  if (recorder.isRecording) {
+                    selected: widget.currentTab == 2,
+                    onSelect: () {
+                      // if (_recorder!.isRecording) {
                       //   await stop();
                       // } else {
                       //   await record();
                       // }
 
-                      // setState(() {
+                      setState(() {});
 
-                      // });
+                      _onChanged(2, RecordPage.routeName);
+                      //record();
                     },
-                    icon: SvgPicture.asset(
-                      AppIcons.recording,
-                    ),
                   ),
-                ),
-              )
-            : const Text(''),
-      ],
-    );
+                  //const SizedBox(width: 5.0),
+                  const Spacer(flex: 3),
+                  _BottomBarItem(
+                    icon: SvgPicture.asset(
+                      AppIcons.paper,
+                      color: widget.currentTab == 3 ? purple : blackBottomBar,
+                    ),
+                    title: Text(
+                      S.of(context).audiorecord,
+                      style: TextStyle(
+                        color: widget.currentTab == 3 ? purple : blackBottomBar,
+                        fontWeight: AppFonts.regular,
+                        height: .5,
+                        fontSize: 10.0,
+                      ),
+                    ),
+                    selected: widget.currentTab == 3,
+                    onSelect: () => _onChanged(3, Audiorecords.routeName),
+                  ),
+                  //const SizedBox(width: 5.0),
+                  const Spacer(flex: 2),
+                  _BottomBarItem(
+                    icon: SvgPicture.asset(
+                      AppIcons.profile,
+                      color: widget.currentTab == 4 ? purple : blackBottomBar,
+                    ),
+                    title: Text(
+                      S.of(context).profile,
+                      style: TextStyle(
+                        color: widget.currentTab == 4 ? purple : blackBottomBar,
+                        fontWeight: AppFonts.regular,
+                        height: .5,
+                        fontSize: 10.0,
+                      ),
+                    ),
+                    selected: widget.currentTab == 4,
+                    onSelect: () => _onChanged(4, Profile.routeName),
+                  ),
+                  const Spacer(flex: 2),
+                  //const SizedBox(width: 5.0),
+                ],
+              ),
+            ),
+          ),
+          widget.currentTab == 2
+              ? Positioned(
+                  left: w / 2.5,
+                  bottom: h / 40,
+                  child: SizedBox(
+                    height: 161,
+                    width: 80,
+                    child: IconButton(
+                        padding: const EdgeInsets.all(0),
+                        onPressed: () async {
+                          // if (recorder.isRecording) {
+                          //   await stop();
+                          // } else {
+                          //   await record();
+                          // }
+                          // RecordPage(
+                          //   onStop: (path) {
+                          //     stop();
+                          //   },
+                          // );
+                          //await stop();\
+                          if (state.status == RecordState.record) {
+                            print("stop");
+                            //setState(() async {
+                              await stop(
+                              state.audioRecorder,
+                              state.recordDuration,
+                              state.timer,
+                            );
+                         //   });
+                            
+                          }
+
+                          // context.read<RecordBloc>().add(
+                          //       StartandStopRecordEvent(
+                          //         audioRecorder: state.audioRecorder,
+                          //         recordDuration: state.recordDuration,
+                          //         timer: state.timer,
+                          //         whatState: () => stop(
+                          //           state.audioRecorder,
+                          //           state.recordDuration,
+                          //           state.timer,
+                          //         ),
+                          //       ),
+                          //     );
+
+                          //setState(() {});
+                        },
+                        icon: SvgPicture.asset(
+                          AppIcons.recording,
+                        )),
+                  ),
+                )
+              : const Text(''),
+        ],
+      );
+    });
   }
 }
 
@@ -350,3 +408,175 @@ class _BottomBarItem extends StatelessWidget {
 //     );
 //   }
 // }
+
+/*
+ Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Material(
+          child: Container(
+            width: double.infinity,
+            height: 69.0,
+            padding: const EdgeInsets.only(top: 5.0),
+            decoration: const BoxDecoration(
+              color: white,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20.0),
+                topLeft: Radius.circular(20.0),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: whiteBottomBar,
+                  offset: Offset(0.0, 4.0),
+                  blurRadius: 50.0,
+                  spreadRadius: 10.0,
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Spacer(flex: 3),
+                //const SizedBox(width: 5.0),
+                _BottomBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.home,
+                    color: widget.currentTab == 0 ? purple : blackBottomBar,
+                  ),
+                  title: Text(
+                    S.of(context).main,
+                    style: TextStyle(
+                      color: widget.currentTab == 0 ? purple : blackBottomBar,
+                      fontWeight: AppFonts.regular,
+                      height: .5,
+                      //inherit: true,
+                      fontSize: 10.0,
+                    ),
+                  ),
+                  selected: widget.currentTab == 0,
+                  onSelect: //() => onSelected,
+                      () => _onChanged(0, MainView.routeName),
+                ),
+                //const SizedBox(width: 5.0),
+                const Spacer(flex: 4),
+                _BottomBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.category,
+                    color: widget.currentTab == 1 ? purple : blackBottomBar,
+                  ),
+                  title: Text(
+                    S.of(context).selections,
+                    style: TextStyle(
+                      color: widget.currentTab == 1 ? purple : blackBottomBar,
+                      fontWeight: AppFonts.regular,
+                      height: .5,
+                      fontSize: 10.0,
+                    ),
+                  ),
+                  selected: widget.currentTab == 1,
+                  onSelect: () => _onChanged(1, Selections.routeName),
+                ),
+                // SizedBox(width: 5.0),
+                const Spacer(flex: 5),
+                _BottomBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.micro,
+                    // color: on ? purple : blackBottomBar,
+                  ),
+                  title: widget.currentTab == 2
+                      ? const Text(
+                          '',
+                          style: TextStyle(
+                            height: 1.0,
+                            fontSize: 1.0,
+                          ),
+                        )
+                      : Text(
+                          S.of(context).record,
+                          style: const TextStyle(
+                            color: orange,
+                            fontWeight: AppFonts.regular,
+                            height: 1.0,
+                            fontSize: 10.0,
+                          ),
+                        ),
+                  selected: widget.currentTab == 2,
+                  onSelect: () {
+                    _onChanged(2, RecordPage.routeName);
+                    // record();
+                  },
+                ),
+                //const SizedBox(width: 5.0),
+                const Spacer(flex: 3),
+                _BottomBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.paper,
+                    color: widget.currentTab == 3 ? purple : blackBottomBar,
+                  ),
+                  title: Text(
+                    S.of(context).audiorecord,
+                    style: TextStyle(
+                      color: widget.currentTab == 3 ? purple : blackBottomBar,
+                      fontWeight: AppFonts.regular,
+                      height: .5,
+                      fontSize: 10.0,
+                    ),
+                  ),
+                  selected: widget.currentTab == 3,
+                  onSelect: () => _onChanged(3, Audiorecords.routeName),
+                ),
+                //const SizedBox(width: 5.0),
+                const Spacer(flex: 2),
+                _BottomBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.profile,
+                    color: widget.currentTab == 4 ? purple : blackBottomBar,
+                  ),
+                  title: Text(
+                    S.of(context).profile,
+                    style: TextStyle(
+                      color: widget.currentTab == 4 ? purple : blackBottomBar,
+                      fontWeight: AppFonts.regular,
+                      height: .5,
+                      fontSize: 10.0,
+                    ),
+                  ),
+                  selected: widget.currentTab == 4,
+                  onSelect: () => _onChanged(4, Profile.routeName),
+                ),
+                const Spacer(flex: 2),
+                //const SizedBox(width: 5.0),
+              ],
+            ),
+          ),
+        ),
+        widget.currentTab == 2
+            ? Positioned(
+                left: w / 2.66,
+                bottom: h / 40,
+                child: SizedBox(
+                  height: 161,
+                  width: 80,
+                  child: IconButton(
+                    padding: const EdgeInsets.all(0),
+                    onPressed: () async {
+                      //  if (recorder.isRecording) {
+                      //   await stop();
+                      // } else {
+                      //   await record();
+                      // }
+
+                      // setState(() {
+
+                      // });
+                    },
+                    icon: SvgPicture.asset(
+                      AppIcons.recording,
+                    ),
+                  ),
+                ),
+              )
+            : const Text(''),
+      ],
+    );
+ */

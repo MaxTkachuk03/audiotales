@@ -1,5 +1,6 @@
 import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/pages/audiotales_pages/record_page.dart';
+import 'package:audiotales/pages/audiotales_pages/recrd_example.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
 import 'package:flutter/material.dart';

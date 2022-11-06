@@ -3,6 +3,8 @@ import 'package:audiotales/pages/audiotales_pages/edit_page.dart';
 import 'package:audiotales/pages/audiotales_pages/premium_page.dart';
 import 'package:audiotales/pages/audiotales_pages/profile_page.dart';
 import 'package:audiotales/pages/audiotales_pages/record_page.dart';
+import 'package:audiotales/pages/audiotales_pages/recrd_example.dart';
+import 'package:audiotales/pages/audiotales_pages/search.dart';
 import 'package:audiotales/pages/audiotales_pages/selections_page.dart';
 import 'package:audiotales/pages/main_page.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_code.dart';
@@ -63,6 +65,9 @@ class AppRouter {
         break;
       case PremiumPage.routeName:
         builder = (_) => const PremiumPage();
+        break;
+      case Search.routeName:
+        builder = (_) => const Search();
         break;
       // case Alert.routeName:
       //   builder = (_) => const Alert();
