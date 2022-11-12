@@ -40,31 +40,6 @@ class _BottomBarState extends State<BottomBar> {
     widget.onSelected(index, routName);
   }
 
-  Future<void> stop(
-    Record audioRecorder,
-    int recordDuration,
-    Timer? timer,
-  ) async {
-    // context.read<RecordBloc>().add(
-    //       StartandStopRecordEvent(
-    //         audioRecorder: audioRecorder,
-    //         recordDuration: recordDuration,
-    //         timer: timer,
-    //         whatState: () => stop(audioRecorder, recordDuration, timer),
-    //       ),
-    //     );
-    timer?.cancel();
-    recordDuration = 0;
-
-    final path = await audioRecorder.stop();
-    final File audioFile;
-
-    if (path != null) {
-      audioFile = File(path);
-      //widget.onStop(path);
-    }
-  }
-
   // @override
   // void dispose() {
   //   _timer?.cancel();
@@ -76,15 +51,17 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
-    return BlocConsumer<RecordBloc, RecordingState>(listener: (context, state) {
-      if (state.status == RecordState.record) {
-        stop(
-          state.audioRecorder,
-          state.recordDuration,
-          state.timer,
-        );
-      }
-    }, builder: (context, state) {
+    return BlocBuilder<RecordBloc, RecordingState>(
+        //   listener: (context, state) {
+        //   if (state.status == RecordState.record) {
+        //     stop(
+        //       state.audioRecorder,
+        //       state.recordDuration,
+        //       state.timer,
+        //     );
+        //   }
+        // },
+        builder: (context, state) {
       return Stack(
         clipBehavior: Clip.none,
         children: [
@@ -178,16 +155,21 @@ class _BottomBarState extends State<BottomBar> {
                             ),
                           ),
                     selected: widget.currentTab == 2,
-                    onSelect: () {
+                    onSelect: () async {
                       // if (_recorder!.isRecording) {
                       //   await stop();
                       // } else {
                       //   await record();
                       // }
 
-                      setState(() {});
+                      //setState(() {
+                      
+                      //  });
 
                       _onChanged(2, RecordPage.routeName);
+                      context.read<RecordBloc>().add(
+                            StartRecordEvent(),
+                          );
                       //record();
                     },
                   ),
@@ -257,15 +239,18 @@ class _BottomBarState extends State<BottomBar> {
                           // );
                           //await stop();\
                           if (state.status == RecordState.record) {
+                            context.read<RecordBloc>().add(
+                                  StopRecordEvent(),
+                                );
                             print("stop");
                             //setState(() async {
-                              await stop(
-                              state.audioRecorder,
-                              state.recordDuration,
-                              state.timer,
-                            );
-                         //   });
-                            
+                            //   await stop(
+                            //   state.audioRecorder,
+                            //   state.recordDuration,
+                            //   state.timer,
+                            // );
+                            //   });
+
                           }
 
                           // context.read<RecordBloc>().add(

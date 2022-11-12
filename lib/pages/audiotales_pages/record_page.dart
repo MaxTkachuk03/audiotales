@@ -26,103 +26,68 @@ class RecordPage extends StatefulWidget {
 }
 
 class _RecordPageState extends State<RecordPage> {
-  int _recordDuration = 0;
-  Timer? _timer;
-  final Record _audioRecorder = Record();
-  StreamSubscription<RecordState>? _recordSub;
-  RecordState _recordState = RecordState.stop;
-  StreamSubscription<Amplitude>? _amplitudeSub;
-  Amplitude? _amplitude;
-
   @override
   void initState() {
-    _recordSub = _audioRecorder.onStateChanged().listen((recordState) {
-      setState(() => _recordState = recordState);
-    });
+    // context.watch<RecordBloc>().state.recordSub = context
+    //     .watch<RecordBloc>()
+    //     .state
+    //     .audioRecorder
+    //     .onStateChanged()
+    //     .listen((recordState) {
+    //   setState(() => context.watch<RecordBloc>().state.status = recordState);
+    // });
+    // _recordSub = _audioRecorder.onStateChanged().listen((recordState) {
+    //   setState(() => _recordState = recordState);
+    // });
 
-    _amplitudeSub = _audioRecorder
-        .onAmplitudeChanged(const Duration(milliseconds: 300))
-        .listen((amp) => setState(() => _amplitude = amp));
+    // context.watch<RecordBloc>().state.amplitudeSub = context
+    //     .watch<RecordBloc>()
+    //     .state
+    //     .audioRecorder
+    //     .onAmplitudeChanged(const Duration(milliseconds: 300))
+    //     .listen((amp) => setState(() => context.watch<RecordBloc>().state.amplitude = amp));
 
     super.initState();
-    if (_recordState == RecordState.stop) {
-      _start(
-        _audioRecorder,
-        _recordDuration,
-        _timer,
+
+    // if (_recordState == RecordState.stop) {
+    //   _start(
+    //     _audioRecorder,
+    //     _recordDuration,
+    //     _timer,
+    //   );
+    // }
+  }
+
+  // @override
+  // void dispose() {
+  //   _timer?.cancel();
+  //   _recordSub?.cancel();
+  //   _amplitudeSub?.cancel();
+  //   _audioRecorder.dispose();
+  //   super.dispose();
+  // }
+
+  // Widget _buildTimer() {
+
+  //   return
+  // }
+  Widget buildTimer(int recordDuration, RecordState status) {
+    final String minutes = _formatNumber(recordDuration ~/ 60);
+    final String seconds = _formatNumber(recordDuration % 60);
+
+    if (status != RecordState.stop) {
+      return Text(
+        '$minutes : $seconds',
+        style: const TextStyle(
+          fontWeight: AppFonts.regular,
+          fontFamily: AppFonts.fontFamily,
+          fontSize: 18.0,
+        ),
       );
-    }
-  }
-
-  Future<void> _start(
-    Record audioRecorder,
-    int recordDuration,
-    Timer? timer,
-  ) async {
-    try {
-      if (await audioRecorder.hasPermission()) {
-        // We don't do anything with this but printing
-        final isSupported = await audioRecorder.isEncoderSupported(
-          AudioEncoder.aacLc,
-        );
-        if (kDebugMode) {
-          print('${AudioEncoder.aacLc.name} supported: $isSupported');
-        }
-
-        // final devs = await _audioRecorder.listInputDevices();
-        // final isRecording = await _audioRecorder.isRecording();
-
-        await audioRecorder.start(path:'audio');
-        recordDuration = 0;
-
-        // _startTimer(); внизу
-
-        timer?.cancel();
-
-        timer = Timer.periodic(
-          const Duration(seconds: 1),
-          (Timer t) {
-            setState(() => _recordDuration++);
-          },
-        );
-        // кінець функції
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-    }
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    _recordSub?.cancel();
-    _amplitudeSub?.cancel();
-    _audioRecorder.dispose();
-    super.dispose();
-  }
-
-  Widget _buildText() {
-    if (_recordState != RecordState.stop) {
-      return _buildTimer();
+      //_buildTimer();
     }
 
     return const Text('Waiting to record');
-  }
-
-  Widget _buildTimer() {
-    final String minutes = _formatNumber(_recordDuration ~/ 60);
-    final String seconds = _formatNumber(_recordDuration % 60);
-
-    return Text(
-      '$minutes : $seconds',
-      style: const TextStyle(
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
-        fontSize: 18.0,
-      ),
-    );
   }
 
   String _formatNumber(int number) {
@@ -130,7 +95,6 @@ class _RecordPageState extends State<RecordPage> {
     if (number < 10) {
       numberStr = '0$numberStr';
     }
-
     return numberStr;
   }
 
@@ -147,34 +111,21 @@ class _RecordPageState extends State<RecordPage> {
         //   state.timer,
         // );
         // });
-        // setState(() {
-        //   context.read<RecordBloc>().add(
-        //         StartandStopRecordEvent(
-        //           audioRecorder: _audioRecorder,
-        //           recordDuration: _recordDuration,
-        //           timer: _timer,
-        //           whatState: () => _start(
-        //             _audioRecorder,
-        //             _recordDuration,
-        //             _timer,
-        //           ),
-        //           state: RecordState.record,
+
+        setState(() {});
+        // context.read<RecordBloc>().add(
+        //       StartandStopRecordEvent(
+        //         audioRecorder: _audioRecorder,
+        //         recordDuration: _recordDuration,
+        //         timer: _timer,
+        //         whatState: () => _start(
+        //           _audioRecorder,
+        //           _recordDuration,
+        //           _timer,
         //         ),
-        //       );
-        // });
-        context.read<RecordBloc>().add(
-              StartandStopRecordEvent(
-                audioRecorder: _audioRecorder,
-                recordDuration: _recordDuration,
-                timer: _timer,
-                whatState: () => _start(
-                  _audioRecorder,
-                  _recordDuration,
-                  _timer,
-                ),
-                state: RecordState.record,
-              ),
-            );
+        //         stateNow: RecordState.record,
+        //       ),
+        //     );
       }
     }, builder: (context, state) {
       return Scaffold(
@@ -221,94 +172,97 @@ class _RecordPageState extends State<RecordPage> {
   }
 
   Widget _slidingRecord() {
-    return Column(
-      //mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        const SizedBox(
-          height: 30.0,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Spacer(
-              flex: 6,
-            ),
-            TextButtonCancel(),
-            Spacer(),
-          ],
-        ),
-        const Spacer(),
-        Text(
-          S.of(context).record,
-          style: const TextStyle(
-            color: black,
-            fontFamily: AppFonts.fontFamily,
-            fontSize: 24.0,
-            fontWeight: AppFonts.regular,
+    return BlocBuilder<RecordBloc, RecordingState>(builder: (context, state) {
+      return Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const SizedBox(
+            height: 30.0,
           ),
-        ),
-        const Spacer(
-          flex: 3,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              AppIcons.redcircle,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Spacer(
+                flex: 6,
+              ),
+              TextButtonCancel(),
+              Spacer(),
+            ],
+          ),
+          const Spacer(),
+          Text(
+            S.of(context).record,
+            style: const TextStyle(
+              color: black,
+              fontFamily: AppFonts.fontFamily,
+              fontSize: 24.0,
+              fontWeight: AppFonts.regular,
             ),
-            const SizedBox(
-              width: 8.0,
-            ),
-            _buildText(),
-            // StreamBuilder<RecordingDisposition>(
-            //   //stream: //_recorder!.onProgress,
-            //   builder: (context, snapshot) {
-            //     final duration =
-            //         snapshot.hasData ? snapshot.data!.duration : Duration.zero;
+          ),
+          const Spacer(
+            flex: 3,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                AppIcons.redcircle,
+              ),
+              const SizedBox(
+                width: 8.0,
+              ),
+              buildTimer(state.recordDuration, state.status),
+              // _buildText(),
+              // StreamBuilder<RecordingDisposition>(
+              //   //stream: //_recorder!.onProgress,
+              //   builder: (context, snapshot) {
+              //     final duration =
+              //         snapshot.hasData ? snapshot.data!.duration : Duration.zero;
 
-            //     String twoDigits(int n) => n.toString().padLeft(2, "0");
-            //     final twoDigitMinutes =
-            //         twoDigits(duration.inMinutes.remainder(60));
-            //     final twoDigitSeconds =
-            //         twoDigits(duration.inSeconds.remainder(60));
-            //     return Text(
-            //       '$twoDigitMinutes:$twoDigitSeconds',
-            //       style: const TextStyle(
-            //         fontWeight: AppFonts.regular,
-            //         fontFamily: AppFonts.fontFamily,
-            //         fontSize: 18.0,
-            //       ),
-            //     );
-            //   },
-            // )
-          ],
-        ),
-        const Spacer(
-          flex: 1,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 81,
-              width: 81,
-              child: IconButton(
-                padding: const EdgeInsets.all(0),
-                onPressed: () {},
-                icon: SvgPicture.asset(
-                  AppIcons.play,
+              //     String twoDigits(int n) => n.toString().padLeft(2, "0");
+              //     final twoDigitMinutes =
+              //         twoDigits(duration.inMinutes.remainder(60));
+              //     final twoDigitSeconds =
+              //         twoDigits(duration.inSeconds.remainder(60));
+              //     return Text(
+              //       '$twoDigitMinutes:$twoDigitSeconds',
+              //       style: const TextStyle(
+              //         fontWeight: AppFonts.regular,
+              //         fontFamily: AppFonts.fontFamily,
+              //         fontSize: 18.0,
+              //       ),
+              //     );
+              //   },
+              // )
+            ],
+          ),
+          const Spacer(
+            flex: 1,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 81,
+                width: 81,
+                child: IconButton(
+                  padding: const EdgeInsets.all(0),
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    AppIcons.play,
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-        const Spacer(
-          flex: 2,
-        ),
-      ],
-    );
+            ],
+          ),
+          const Spacer(
+            flex: 2,
+          ),
+        ],
+      );
+    });
   }
 }
 
@@ -321,6 +275,6 @@ class _RecordPageState extends State<RecordPage> {
 
 //   @override
 //   Widget build(BuildContext context) {
-//     return 
+//     return
 //   }
 // }

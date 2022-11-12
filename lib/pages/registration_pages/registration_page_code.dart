@@ -12,15 +12,25 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationPageCode extends StatefulWidget {
-  const RegistrationPageCode({Key? key}) : super(key: key);
+  const RegistrationPageCode({
+    Key? key,
+    this.controller,
+    required this.onTap,
+    this.context,
+  }) : super(key: key);
 
   static const routeName = '/registration_pages/code';
+
+  final BuildContext? context;
+  final TextEditingController? controller;
+  final Function() onTap;
 
   @override
   State<RegistrationPageCode> createState() => _RegistrationPageCodeState();
 }
 
 class _RegistrationPageCodeState extends State<RegistrationPageCode> {
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -76,10 +86,11 @@ class _RegistrationPageCodeState extends State<RegistrationPageCode> {
                             ),
                           ],
                         ),
-                        child: const TextField(
+                        child: TextField(
                           cursorColor: lightBlack,
                           maxLines: 1,
-                          decoration: InputDecoration(
+                          controller: widget.controller,
+                          decoration: const InputDecoration(
                             contentPadding: EdgeInsets.all(10.0),
                             fillColor: white,
                             filled: true,
@@ -89,7 +100,7 @@ class _RegistrationPageCodeState extends State<RegistrationPageCode> {
                           ),
                           keyboardType: TextInputType.phone,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: black,
                               fontWeight: AppFonts.regular,
                               fontSize: 20.0),
@@ -100,10 +111,11 @@ class _RegistrationPageCodeState extends State<RegistrationPageCode> {
                         flex: 3,
                       ),
                       FloatingABWrapper(
-                        onTap: () {
-                          Navigator.pushNamed(
-                              context, RegistrationPageEnd.routeName);
-                        },
+                        onTap: widget.onTap,
+                        // () async {
+                        //   Navigator.pushNamed(
+                        //       context, RegistrationPageEnd.routeName);
+                        // },
                         text: S.of(context).buttonText,
                       ),
                       const Spacer(

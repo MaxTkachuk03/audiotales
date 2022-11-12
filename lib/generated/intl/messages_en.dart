@@ -89,6 +89,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Написать в\n поддержку "),
         "telephoneText":
             MessageLookupByLibrary.simpleMessage("Введи номер телефона"),
+        "trueNumber": MessageLookupByLibrary.simpleMessage(
+            "Вы уверены, что ввели номер верно?"),
         "underMemoryBox":
             MessageLookupByLibrary.simpleMessage("Твой голос всегда рядом"),
         "weGlad": MessageLookupByLibrary.simpleMessage("Мы рады тебя видеть"),

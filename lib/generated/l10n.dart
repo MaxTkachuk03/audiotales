@@ -579,6 +579,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Вы уверены, что ввели номер верно?`
+  String get trueNumber {
+    return Intl.message(
+      'Вы уверены, что ввели номер верно?',
+      name: 'trueNumber',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

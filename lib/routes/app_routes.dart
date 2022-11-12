@@ -31,7 +31,7 @@ class AppRouter {
         builder = (_) => const RegistrationPageNumbers();
         break;
       case RegistrationPageCode.routeName:
-        builder = (_) => const RegistrationPageCode();
+        builder = (_) => RegistrationPageCode(onTap: () {  },);
         break;
       case RegistrationPageEnd.routeName:
         builder = (_) => const RegistrationPageEnd();

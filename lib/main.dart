@@ -3,6 +3,7 @@ import 'package:audiotales/pages/screens/logined_page_start.dart';
 import 'package:audiotales/pages/screens/splashscreen.dart';
 import 'package:audiotales/resouses/themes.dart';
 import 'package:audiotales/routes/app_routes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,7 +11,17 @@ import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
 
 import 'generated/l10n.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: 'AIzaSyCagIq1dQubCdX4rDjxLBd8s0jsqCvzT5M',
+      appId: '1:479902420420:android:221226bc388817d276e891',
+      messagingSenderId: '479902420420',
+      projectId: 'audiotales-flutter',
+      storageBucket: 'audiotales-flutter.appspot.com',
+    ),
+  );
   //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MyApp());
 }
@@ -23,7 +34,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   void initState() {
     _initSettings();
@@ -38,35 +48,36 @@ class _MyAppState extends State<MyApp> {
           create: (context) => RecordBloc(),
         ),
       ],
-      child: BlocBuilder<RecordBloc, RecordingState>(
-        builder: (context, state) {
-          return MaterialApp(
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              debugShowCheckedModeBanner: false,
-              theme: AppThemes.light(),
-             // home: const SplashScreen(), 
-              initialRoute: SplashScreen.routeName,
-                  onGenerateRoute: AppRouter.generateRoute,
-                  routes: {
-                    SplashScreen.routeName: (_) => const SplashScreen(),
-                  },
-            //  const LoginedPageStart(),
-            );
-        }
-      ),
+      child: BlocBuilder<RecordBloc, RecordingState>(builder: (
+        context,
+        state,
+      ) {
+        return MaterialApp(
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          debugShowCheckedModeBanner: false,
+          theme: AppThemes.light(),
+          // home: const SplashScreen(),
+          initialRoute: SplashScreen.routeName,
+          onGenerateRoute: AppRouter.generateRoute,
+          routes: {
+            SplashScreen.routeName: (_) => const SplashScreen(),
+          },
+          //  const LoginedPageStart(),
+        );
+      }),
     );
   }
 }
 
-void _initSettings(){
-   PhoneInputFormatter.replacePhoneMask(
-      countryCode: 'UA',
-      newMask: '+000 (00) 000 00 00',
-    );
+void _initSettings() {
+  PhoneInputFormatter.replacePhoneMask(
+    countryCode: 'UA',
+    newMask: '+000 (00) 000 00 00',
+  );
 }

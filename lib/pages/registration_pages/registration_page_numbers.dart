@@ -3,13 +3,16 @@
 import 'dart:core';
 import 'package:audiotales/generated/l10n.dart';
 import 'package:audiotales/pages/registration_pages/registration_page_code.dart';
+import 'package:audiotales/repositories/firebase_phone_registration.dart';
 import 'package:audiotales/resouses/borders.dart';
 import 'package:audiotales/resouses/colors.dart';
 import 'package:audiotales/resouses/fonts.dart';
 import 'package:audiotales/widgets/buttons/floating_actions_button.dart';
 import 'package:audiotales/widgets/buttons/text_button_after.dart';
+import 'package:audiotales/widgets/dialogs_windows/number_confidence_dialog.dart';
 import 'package:audiotales/widgets/paint/circular_wrapper.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
@@ -23,6 +26,21 @@ class RegistrationPageNumbers extends StatefulWidget {
 }
 
 class _RegistrationPageStartState extends State<RegistrationPageNumbers> {
+  final TextEditingController phoneController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    phoneController.dispose();
+  }
+
+  void phoneSignIn() {
+    FirebaseAuthMethods(FirebaseAuth.instance).phoneSignIn(
+      context: context,
+      phoneNumber: phoneController.text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -83,6 +101,7 @@ class _RegistrationPageStartState extends State<RegistrationPageNumbers> {
                         ),
                         child: TextField(
                           cursorColor: lightBlack,
+                          controller: phoneController,
                           decoration: const InputDecoration(
                             contentPadding: EdgeInsets.all(10.0),
                             fillColor: white,
@@ -107,8 +126,12 @@ class _RegistrationPageStartState extends State<RegistrationPageNumbers> {
                       const Spacer(flex: 3),
                       FloatingABWrapper(
                         onTap: () {
-                          Navigator.pushNamed(
-                              context, RegistrationPageCode.routeName);
+                          areYouSureAboutNumber(context);
+                          phoneSignIn();
+                          // Navigator.pushNamed(
+                          //   context,
+                          //   RegistrationPageCode.routeName,
+                          // );
                         },
                         text: S.of(context).buttonText,
                       ),
